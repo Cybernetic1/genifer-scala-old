@@ -2,7 +2,7 @@ package genifer3
 
 class MapReduce {
   // Map should a "mesh" which is a List of Formulas
-  def mapKB(msg: List[Formula]): List[Formula] = {
+  def map(msg: List[Formula]): List[Formula] = {
     List(new Formula(List(new Atom(Left(12)))))
   }
 

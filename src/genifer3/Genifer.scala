@@ -1,5 +1,7 @@
 // To-do:
-// - map jar to KB
+// -- map jug to KB
+// -- reduce
+// add 2 key formulas to KB
 
 package genifer3
 
@@ -20,27 +22,33 @@ object Genifer {
 			var list = new ListBuffer[Atom]()
 			for(term <- line.split(" ")) {
 				if (term(0) == '\"')
-					list += new Atom(Right(term))
+					list += new Atom(Right(term.replace("\"", "")))
 				else
 					list += new Atom(Left(term.toInt))
 			}
-			// Add Formula to KB
 			kb.addFormula(new Formula(list.toList))
 		}
 	}
 
 	// ***** Convert Mandarin Chinese string to Cantonese
 	// This will be called by Genifer-server
-	def cantonize(s: String): String = {
+	// INPUT:  string to be Cantonized
+	def cantonize(str: String): String = {
 		val mapReduce = new MapReduce()
-		// Prepare jug, execute jug
+
 		// for each command, the jug is the single goal
 		// command = goal = formula
-		val command = new Formula(List())
-		// after creating jug, send the jug to matching
-		// jug should be a list of formulas
-		val mesh = mapReduce.mapKB(List(command))
-		// matching returns the resulting 'graph'
+		var list = new ListBuffer[Atom]()
+		list += new Atom(Left(1001))
+		for(char <- str) {
+				list += new Atom(Right(char.toString))
+		}
+		val command = new Formula(list.toList)
+
+		// jug should be a list of formulas, in this case just 1
+		val mesh = mapReduce.map(List(command))
+
+		// matching returns the resulting 'graph' or mesh
 		val answer = mapReduce.reduce(mesh)
 		mapReduce.action(answer)
 	}

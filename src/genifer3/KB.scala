@@ -37,7 +37,9 @@ class KB {
 // Define concepts dictionary: Int -> String
 class dictionary {
 	val dictMap = Map[Int, String](
-		1000 -> "Cantonese"			// this is a user-defined concept
+		1000 -> "CantoneseWord",
+		1001 -> "CantonizeSentence",
+		1002 -> "CantonizeWord"
 	)
 }
 
