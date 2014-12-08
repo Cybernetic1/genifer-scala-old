@@ -1,17 +1,25 @@
 package genifer3
 
 class MapReduce {
-  // Map should a "mesh" which is a List of Formulas
-  def map(msg: List[Formula]): List[Formula] = {
-    List(new Formula(List(new Atom(Left(12)))))
+
+  // OUTPUT: a "mesh" which is a List of Formulas
+  def map(kb: KB, jug: List[Formula]): List[Formula] = {
+    for (kbItem <- kb) {
+      for (jugItem <- jug) {
+        jugItem.unify(kbItem)
+        // if match, collect matched results
+      }
+    }
+    List()
   }
 
-  // Reduce should return a Formula + Truth
+  // OUTPUT: a Formula + Truth
   def reduce(mesh: List[Formula]): Formula = {
-    new Formula(List(new Atom(Left(21))))
+    new Formula(Nil)
   }
 
-  // Action should return a data item
+  // **** Perform an action
+  // OUTPUT: a data item
   def action(command: Formula): String = {
     "Fine!"
   }

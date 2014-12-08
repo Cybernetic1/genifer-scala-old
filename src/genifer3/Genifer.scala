@@ -1,7 +1,8 @@
 // To-do:
 // -- map jug to KB
+// -- need to have rule structure = precond + postcond
 // -- reduce
-// add 2 key formulas to KB
+// add 2 key Formulas to KB
 
 package genifer3
 
@@ -37,7 +38,7 @@ object Genifer {
 		val mapReduce = new MapReduce()
 
 		// for each command, the jug is the single goal
-		// command = goal = formula
+		// command = goal = Formula
 		var list = new ListBuffer[Atom]()
 		list += new Atom(Left(1001))
 		for(char <- str) {
@@ -45,8 +46,8 @@ object Genifer {
 		}
 		val command = new Formula(list.toList)
 
-		// jug should be a list of formulas, in this case just 1
-		val mesh = mapReduce.map(List(command))
+		// jug should be a list of Formulas, in this case just 1
+		val mesh = mapReduce.map(kb, List(command))
 
 		// matching returns the resulting 'graph' or mesh
 		val answer = mapReduce.reduce(mesh)
