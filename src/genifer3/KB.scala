@@ -11,6 +11,12 @@ class KB {
 	}
 }
 
+class ⊔ {
+	def ⊔(): Unit = {
+
+	}
+}
+
 // Concepts dictionary: Int -> String
 class dictionary {
 	val dictMap = Map[Int, String](

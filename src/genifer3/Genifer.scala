@@ -1,13 +1,11 @@
 // To-do:
 // -- map jug to KB
-// -- need to have rule structure = precond + postcond
 // -- reduce
 // add 2 key Formulas to KB
 
 package genifer3
 
 import scala.io.Source
-import scala.collection.mutable.ListBuffer
 import scala.collection.JavaConversions._
 
 object Genifer {

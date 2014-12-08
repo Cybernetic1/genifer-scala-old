@@ -33,11 +33,11 @@
       <file leaf-file-name="Genifer.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="776" max-vertical-offset="1386">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1342">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#145#167#0" expanded="true" />
+                <element signature="e#90#112#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,7 +46,7 @@
       <file leaf-file-name="MapReduce.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/genifer3/MapReduce.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="726">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726">
               <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
@@ -56,8 +56,8 @@
       <file leaf-file-name="KB.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/genifer3/KB.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1254">
-              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1386">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -76,11 +76,28 @@
       <file leaf-file-name="Formula.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/genifer3/Formula.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50491804" vertical-offset="0" max-vertical-offset="660">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3967213" vertical-offset="0" max-vertical-offset="2442">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
-                <element signature="e#474#475#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#355#356#0" expanded="true" />
+                <element signature="e#382#383#0" expanded="true" />
+                <element signature="e#423#424#0" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+                <element signature="e#529#530#0" expanded="true" />
+                <element signature="e#557#558#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#1026#1027#0" expanded="true" />
+                <element signature="e#1053#1054#0" expanded="true" />
+                <element signature="e#2206#2207#0" expanded="true" />
+                <element signature="e#2244#2245#0" expanded="true" />
+                <element signature="e#2269#2270#0" expanded="true" />
+                <element signature="e#2296#2297#0" expanded="true" />
+                <element signature="e#2337#2338#0" expanded="true" />
+                <element signature="e#2396#2397#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,9 +112,9 @@
         <option value="$PROJECT_DIR$/src/genifer/Genifer.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/logic.java" />
         <option value="$PROJECT_DIR$/src/genifer3/Atom.java" />
+        <option value="$PROJECT_DIR$/src/genifer3/MapReduce.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/KB.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Genifer.scala" />
-        <option value="$PROJECT_DIR$/src/genifer3/MapReduce.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Formula.java" />
       </list>
     </option>
@@ -215,7 +232,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="options.lastSelected" value="Errors" />
+    <property name="options.lastSelected" value="preferences.sourceCode" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FullScreen" value="false" />
@@ -223,6 +240,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
   </component>
   <component name="RunManager" selected="Application.Genifer">
     <configuration default="false" name="Genifer" type="Application" factoryName="Application" temporary="true">
@@ -534,27 +552,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/KB.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1254">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="776" max-vertical-offset="1386">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#145#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/MapReduce.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="726">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="1386">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -567,13 +566,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1342">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#90#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/genifer3/MapReduce.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="726">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/Formula.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50491804" vertical-offset="0" max-vertical-offset="660">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3967213" vertical-offset="0" max-vertical-offset="2442">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#423#424#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#2206#2207#0" expanded="true" />
+            <element signature="e#2244#2245#0" expanded="true" />
+            <element signature="e#2269#2270#0" expanded="true" />
+            <element signature="e#2296#2297#0" expanded="true" />
+            <element signature="e#2337#2338#0" expanded="true" />
+            <element signature="e#2396#2397#0" expanded="true" />
           </folding>
         </state>
       </provider>
