@@ -1,15 +1,13 @@
 package genifer3
 
-// To-do:
-
 // An atoms is either a concept (represented by its index)
 // or a string datum
-class Atom(x: Either[Int, String]) {
-	val datum = x match {
-		case Left(int) => int
-		case Right(str) => str
-	}
-}
+//class Atom(x: Either[Int, String]) {
+//	val datum = x match {
+//		case Left(int) => int
+//		case Right(str) => str
+//	}
+//}
 
 // A Formula is a Set of Lists of Atoms (ie, union of products)
 // but at this stage, we skip the union (Set)
@@ -30,11 +28,11 @@ class Formula(list: List[Atom]) {
 
 // Define KB as array
 class KB {
-	val c = new Atom(Left(1000))		// concept for "Cantonese"
+	val c = new Atom(1000)		// concept for "Cantonese"
 
 	var kb: List[Formula] = List(
-		new Formula(List(c, new Atom(Right("shit")))),
-		new Formula(List(c, new Atom(Left(5))))
+		new Formula(List(c, new Atom("shit"))),
+		new Formula(List(c, new Atom(5)))
 	)
 
 	def addFormula(f: Formula): Unit = {
@@ -51,5 +49,3 @@ class dictionary {
 		1002 -> "CantonizeWord"
 	)
 }
-
-

@@ -4,7 +4,7 @@ class MapReduce {
 
   // OUTPUT: a "mesh" which is a List of Formulas
   def map(kb: KB, jug: List[Formula]): List[Formula] = {
-    for (kbItem <- kb) {
+    for (kbItem <- kb.kb) {
       for (jugItem <- jug) {
         jugItem.unify(kbItem)
         // if match, collect matched results

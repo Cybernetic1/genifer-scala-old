@@ -17,15 +17,15 @@ object Genifer {
 		println("This is Genifer.")
 
 		// Read KB from file
-		val filename = "/home/yky/Cantonese-Mandarin-dictionary.txt"
+		val filename = "test/Cantonese-Mandarin-dictionary.txt"
 		for(line <- Source.fromFile(filename).getLines()) {
 			println(line)
 			var list = new ListBuffer[Atom]()
 			for(term <- line.split(" ")) {
 				if (term(0) == '\"')
-					list += new Atom(Right(term.replace("\"", "")))
+					list += new Atom(term.replace("\"", ""))
 				else
-					list += new Atom(Left(term.toInt))
+					list += new Atom(term.toInt)
 			}
 			kb.addFormula(new Formula(list.toList))
 		}
@@ -40,9 +40,9 @@ object Genifer {
 		// for each command, the jug is the single goal
 		// command = goal = Formula
 		var list = new ListBuffer[Atom]()
-		list += new Atom(Left(1001))
+		list += new Atom(1001)
 		for(char <- str) {
-				list += new Atom(Right(char.toString))
+				list += new Atom(char.toString)
 		}
 		val command = new Formula(list.toList)
 
