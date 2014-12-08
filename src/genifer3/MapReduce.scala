@@ -15,7 +15,7 @@ class MapReduce {
 
   // OUTPUT: a Formula + Truth
   def reduce(mesh: List[Formula]): Formula = {
-    new Formula(Nil)
+    new Formula(new java.util.ArrayList)
   }
 
   // **** Perform an action

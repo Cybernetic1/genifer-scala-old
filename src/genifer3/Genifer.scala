@@ -8,6 +8,7 @@ package genifer3
 
 import scala.io.Source
 import scala.collection.mutable.ListBuffer
+import scala.collection.JavaConversions._
 
 object Genifer {
 
@@ -20,14 +21,14 @@ object Genifer {
 		val filename = "test/Cantonese-Mandarin-dictionary.txt"
 		for(line <- Source.fromFile(filename).getLines()) {
 			println(line)
-			var list = new ListBuffer[Atom]()
+			var list = new java.util.ArrayList[Atom]
 			for(term <- line.split(" ")) {
 				if (term(0) == '\"')
 					list += new Atom(term.replace("\"", ""))
 				else
 					list += new Atom(term.toInt)
 			}
-			kb.addFormula(new Formula(list.toList))
+			kb.addFormula(new Formula(list))
 		}
 	}
 
@@ -39,12 +40,12 @@ object Genifer {
 
 		// for each command, the jug is the single goal
 		// command = goal = Formula
-		var list = new ListBuffer[Atom]()
+		var list = new java.util.ArrayList[Atom]
 		list += new Atom(1001)
 		for(char <- str) {
 				list += new Atom(char.toString)
 		}
-		val command = new Formula(list.toList)
+		val command = new Formula(list)
 
 		// jug should be a list of Formulas, in this case just 1
 		val mesh = mapReduce.map(kb, List(command))
