@@ -1,4 +1,5 @@
 // To-do:
+// -- unify
 // -- map jug to KB
 // -- reduce
 // add 2 key Formulas to KB
@@ -14,6 +15,9 @@ object Genifer {
 
 	def main(args: Array[String]) {
 		println("This is Genifer.")
+
+		// load unification algorithm from Clojure
+		new clojure().initClojure()
 
 		// Read KB from file
 		val filename = "test/Cantonese-Mandarin-dictionary.txt"
