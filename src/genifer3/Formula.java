@@ -7,6 +7,7 @@ package genifer3;
 //           | Formula → Formula
 //           | ⋀ Formula        (probabilistic AND)
 
+import clojure.lang.PersistentList;
 import javafx.util.Pair;
 
 import java.io.IOException;
@@ -16,8 +17,8 @@ import clojure.java.api.Clojure;
 import clojure.lang.IFn;
 import clojure.lang.RT;
 
-class clojure {
-    public IFn unify;
+class GeniferClojure {
+    public static IFn unify;
 
     public void initClojure() {
         try {
@@ -41,51 +42,50 @@ class Term {
         atoms = list;
     }
 
-    public boolean unify(Term t) {
-        RT.var("genifer", "unification$unify").invoke(this.atoms, t.atoms);
-        return true;
-    }
-
-
-    // Unify this.Term with t2
+    // Unify this.Term with t
     // OUTPUT: list of unifiers, each unifier is a pair
-    public ArrayList<Pair<Atom, Atom>> unify2(Term t) {
-        if (isConst(this) || isConst(t)) {
-            if (this == t)
-                return new ArrayList();
-            else
-                return null;
-        }
-        if (isVar(this))
-            // occurs check?
-            // return new Pair<Atom, Atom>(t, this);
-        if (isVar(t))
-            // occurs check?
-            // return new Pair<Atom, Atom>(this, t);
-        if (this.atoms.isEmpty() || t.atoms.isEmpty())
-            return null;
-
-        while (true) {
-            Atom a1 = this.atoms.get(0);
-            Atom a2 = t.atoms.get(0);
-            // Pair subs1 = a1.unify(a2);
-            // Term tail1 = apply(subs1, this.atoms. (1, -1));
-            // Term tail2 = apply(subs1, t.atoms.subList(1, -1));
-            // ArrayList<Pair<Atom, Atom>> subs2 = tail1.unify(tail2);
-            // if (subs2 == null)
-                // return null;
-            // else
-                // return subs2; // .add(subs1);
-        }
+    public Object unify(Term t) {
+        return GeniferClojure.unify.invoke(this.atoms, t.atoms);
     }
 
-    public boolean isConst(Term t) {
-        return true;
-    }
-
-    public boolean isVar(Term t) {
-        return true;
-    }
+//    **** old code
+//    public ArrayList<Pair<Atom, Atom>> unify2(Term t) {
+//        if (isConst(this) || isConst(t)) {
+//            if (this == t)
+//                return new ArrayList();
+//            else
+//                return null;
+//        }
+//        if (isVar(this))
+//            // occurs check?
+//            // return new Pair<Atom, Atom>(t, this);
+//        if (isVar(t))
+//            // occurs check?
+//            // return new Pair<Atom, Atom>(this, t);
+//        if (this.atoms.isEmpty() || t.atoms.isEmpty())
+//            return null;
+//
+//        while (true) {
+//            Atom a1 = this.atoms.get(0);
+//            Atom a2 = t.atoms.get(0);
+//            // Pair subs1 = a1.unify(a2);
+//            // Term tail1 = apply(subs1, this.atoms. (1, -1));
+//            // Term tail2 = apply(subs1, t.atoms.subList(1, -1));
+//            // ArrayList<Pair<Atom, Atom>> subs2 = tail1.unify(tail2);
+//            // if (subs2 == null)
+//                // return null;
+//            // else
+//                // return subs2; // .add(subs1);
+//        }
+//    }
+//
+//    public boolean isConst(Term t) {
+//        return true;
+//    }
+//
+//    public boolean isVar(Term t) {
+//        return true;
+//    }
 }
 
 class Union extends Term {

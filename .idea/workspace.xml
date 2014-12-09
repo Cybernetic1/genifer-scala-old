@@ -34,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1430">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#102#124#0" expanded="true" />
@@ -76,30 +76,28 @@
       <file leaf-file-name="Formula.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/genifer3/Formula.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09547739" vertical-offset="336" max-vertical-offset="3806">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33668342" vertical-offset="262" max-vertical-offset="3806">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#838#839#0" expanded="true" />
-                <element signature="e#866#867#0" expanded="true" />
-                <element signature="e#907#908#0" expanded="true" />
-                <element signature="e#935#936#0" expanded="true" />
-                <element signature="e#2210#2211#0" expanded="true" />
-                <element signature="e#2237#2238#0" expanded="true" />
-                <element signature="e#2273#2274#0" expanded="true" />
-                <element signature="e#2300#2301#0" expanded="true" />
-                <element signature="e#2379#2380#0" expanded="true" />
-                <element signature="e#2407#2408#0" expanded="true" />
-                <element signature="e#2583#2584#0" expanded="true" />
-                <element signature="e#2610#2611#0" expanded="true" />
-                <element signature="e#2777#2778#0" expanded="true" />
-                <element signature="e#2804#2805#0" expanded="true" />
-                <element signature="e#3958#3959#0" expanded="true" />
-                <element signature="e#3996#3997#0" expanded="true" />
-                <element signature="e#4021#4022#0" expanded="true" />
-                <element signature="e#4048#4049#0" expanded="true" />
-                <element signature="e#4089#4090#0" expanded="true" />
-                <element signature="e#4148#4149#0" expanded="true" />
+                <element signature="e#888#889#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#957#958#0" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
+                <element signature="e#1177#1178#0" expanded="true" />
+                <element signature="e#2488#2489#0" expanded="true" />
+                <element signature="e#2516#2517#0" expanded="true" />
+                <element signature="e#2692#2693#0" expanded="true" />
+                <element signature="e#2719#2720#0" expanded="true" />
+                <element signature="e#2886#2887#0" expanded="true" />
+                <element signature="e#2913#2914#0" expanded="true" />
+                <element signature="e#4067#4068#0" expanded="true" />
+                <element signature="e#4105#4106#0" expanded="true" />
+                <element signature="e#4130#4131#0" expanded="true" />
+                <element signature="e#4157#4158#0" expanded="true" />
+                <element signature="e#4198#4199#0" expanded="true" />
+                <element signature="e#4257#4258#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,8 +114,8 @@
         <option value="$PROJECT_DIR$/src/genifer3/MapReduce.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/KB.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Atom.java" />
-        <option value="$PROJECT_DIR$/src/genifer3/Genifer.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Formula.java" />
+        <option value="$PROJECT_DIR$/src/genifer3/Genifer.scala" />
       </list>
     </option>
   </component>
@@ -613,7 +611,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32615384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32615384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24452902" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -677,17 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1430">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#102#124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/Atom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1056">
@@ -696,32 +683,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1430">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#102#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/Formula.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09547739" vertical-offset="336" max-vertical-offset="3806">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33668342" vertical-offset="262" max-vertical-offset="3806">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#2210#2211#0" expanded="true" />
-            <element signature="e#2237#2238#0" expanded="true" />
-            <element signature="e#2273#2274#0" expanded="true" />
-            <element signature="e#2300#2301#0" expanded="true" />
-            <element signature="e#2379#2380#0" expanded="true" />
-            <element signature="e#2407#2408#0" expanded="true" />
-            <element signature="e#2583#2584#0" expanded="true" />
-            <element signature="e#2610#2611#0" expanded="true" />
-            <element signature="e#2777#2778#0" expanded="true" />
-            <element signature="e#2804#2805#0" expanded="true" />
-            <element signature="e#3958#3959#0" expanded="true" />
-            <element signature="e#3996#3997#0" expanded="true" />
-            <element signature="e#4021#4022#0" expanded="true" />
-            <element signature="e#4048#4049#0" expanded="true" />
-            <element signature="e#4089#4090#0" expanded="true" />
-            <element signature="e#4148#4149#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="true" />
+            <element signature="e#2488#2489#0" expanded="true" />
+            <element signature="e#2516#2517#0" expanded="true" />
+            <element signature="e#2692#2693#0" expanded="true" />
+            <element signature="e#2719#2720#0" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2913#2914#0" expanded="true" />
+            <element signature="e#4067#4068#0" expanded="true" />
+            <element signature="e#4105#4106#0" expanded="true" />
+            <element signature="e#4130#4131#0" expanded="true" />
+            <element signature="e#4157#4158#0" expanded="true" />
+            <element signature="e#4198#4199#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
           </folding>
         </state>
       </provider>

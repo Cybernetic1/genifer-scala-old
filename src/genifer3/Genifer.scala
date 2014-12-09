@@ -17,7 +17,7 @@ object Genifer {
 		println("This is Genifer.")
 
 		// load unification algorithm from Clojure
-		new clojure().initClojure()
+		new GeniferClojure().initClojure()
 
 		// Read KB from file
 		val filename = "test/Cantonese-Mandarin-dictionary.txt"
