@@ -6,7 +6,7 @@ class MapReduce {
   def map(kb: KB, jug: List[Formula]): List[Formula] = {
     for (kbItem <- kb.kb) {
       for (jugItem <- jug) {
-        jugItem.unify(kbItem)
+        println(jugItem.unify(kbItem))
         // if match, collect matched results
       }
     }

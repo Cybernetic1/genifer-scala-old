@@ -1,5 +1,4 @@
 // To-do:
-// -- unify
 // -- map jug to KB
 // -- reduce
 // add 2 key Formulas to KB
@@ -32,6 +31,9 @@ object Genifer {
 			}
 			kb.addFormula(new Formula(list))
 		}
+
+		// println(cantonize("你锺意做乜？"))
+		println(cantonize("乜"))
 	}
 
 	// ***** Convert Mandarin Chinese string to Cantonese
@@ -43,7 +45,8 @@ object Genifer {
 		// for each command, the jug is the single goal
 		// command = goal = Formula
 		var list = new java.util.ArrayList[Atom]
-		list += new Atom(1001)
+		list += new Atom(1000)
+		list += new Atom(-1)
 		for(char <- str) {
 				list += new Atom(char.toString)
 		}

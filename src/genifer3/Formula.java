@@ -7,9 +7,6 @@ package genifer3;
 //           | Formula → Formula
 //           | ⋀ Formula        (probabilistic AND)
 
-import clojure.lang.PersistentList;
-import javafx.util.Pair;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,13 +18,17 @@ class GeniferClojure {
     public static IFn unify;
 
     public void initClojure() {
+        // System.out.println(System.getProperty("user.dir"));
         try {
-            RT.loadResourceScript("genifer/unification.clj");
+            // This requires Genifer jar to be added to project
+            RT.loadResourceScript("genifer/unify.clj");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        unify = Clojure.var("genifer.unification", "unify");
-        System.out.println(unify.invoke("a", "a"));
+        unify = Clojure.var("genifer.unification", "unify0");
+        // System.out.println(unify.invoke("a", "a"));
+        // Atom a = new Atom(1001);
+        // System.out.println(Clojure.var("genifer.unification", "testing").invoke(a));
     }
 }
 
@@ -45,6 +46,8 @@ class Term {
     // Unify this.Term with t
     // OUTPUT: list of unifiers, each unifier is a pair
     public Object unify(Term t) {
+        // System.out.println(this.atoms);
+        // System.out.println(t.atoms);
         return GeniferClojure.unify.invoke(this.atoms, t.atoms);
     }
 
