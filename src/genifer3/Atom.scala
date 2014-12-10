@@ -28,4 +28,18 @@ class Atom {
     this.index = 0
     this.str = s
   }
+
+  // Is x a constant?
+  // At this point x must be Atom (defined in Java)
+  // Return Yes if x.index >= 0
+  def isConst: Boolean = {
+    this.index >= 0
+  }
+
+  // Is x a variable?
+  // At this point x must be Atom (defined in Java)
+  // Return Yes if x.index < 0
+  def isVariable: Boolean = {
+    this.index < 0
+  }
 }
