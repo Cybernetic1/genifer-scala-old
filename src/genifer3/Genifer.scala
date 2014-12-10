@@ -5,6 +5,8 @@
 
 package genifer3
 
+import java.util
+
 import scala.io.Source
 import scala.collection.JavaConversions._
 
@@ -15,20 +17,19 @@ object Genifer {
 	def main(args: Array[String]) {
 		println("This is Genifer.")
 
-		// load unification algorithm from Clojure
-		new GeniferClojure().initClojure()
-
 		// Read KB from file
 		val filename = "test/Cantonese-Mandarin-dictionary.txt"
 		for(line <- Source.fromFile(filename).getLines()) {
 			println(line)
-			var list = new java.util.ArrayList[Atom]
+			var list = new util.ArrayList[Atom]
 			for(term <- line.split(" ")) {
 				if (term(0) == '\"')
 					list += new Atom(term.replace("\"", ""))
 				else
 					list += new Atom(term.toInt)
 			}
+			//val t = new ⦿ (list)
+			//val f = new Formula(list)
 			kb.addFormula(new Formula(list))
 		}
 

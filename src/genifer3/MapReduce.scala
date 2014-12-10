@@ -6,7 +6,8 @@ class MapReduce {
   def map(kb: KB, jug: List[Formula]): List[Formula] = {
     for (kbItem <- kb.kb) {
       for (jugItem <- jug) {
-        println(jugItem.unify(kbItem))
+        val result = jugItem.unify(kbItem)
+        println("\n********\n")
         // if match, collect matched results
       }
     }
@@ -15,7 +16,7 @@ class MapReduce {
 
   // OUTPUT: a Formula + Truth
   def reduce(mesh: List[Formula]): Formula = {
-    new Formula(new java.util.ArrayList)
+    new Formula()
   }
 
   // **** Perform an action
