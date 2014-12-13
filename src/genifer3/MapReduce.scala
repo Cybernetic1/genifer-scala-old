@@ -1,21 +1,26 @@
 package genifer3
 
+import java.util
+
 class MapReduce {
 
   // OUTPUT: a "mesh" which is a List of Formulas
-  def map(kb: KB, jug: List[Formula]): List[Formula] = {
+  def map(kb: KB, jug: List[Formula]): util.LinkedList[Formula] = {
+    val u = new Unify()
     for (kbItem <- kb.kb) {
       for (jugItem <- jug) {
-        val result = jugItem.unify(kbItem)
+        println("jug item atoms: ", jugItem.atoms)
+        println("KB item atoms: ", kbItem.atoms)
+        val result = u.unify(jugItem, kbItem, '0', new u.Sub())
         println("\n********\n")
         // if match, collect matched results
       }
     }
-    List()
+    new util.LinkedList()
   }
 
   // OUTPUT: a Formula + Truth
-  def reduce(mesh: List[Formula]): Formula = {
+  def reduce(mesh: util.LinkedList[Formula]): Formula = {
     new Formula()
   }
 

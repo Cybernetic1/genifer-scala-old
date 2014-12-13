@@ -21,17 +21,19 @@ object Genifer {
 		val filename = "test/Cantonese-Mandarin-dictionary.txt"
 		for(line <- Source.fromFile(filename).getLines()) {
 			println(line)
-			var list = new util.ArrayList[Atom]
+			var list = new util.LinkedList[Atom]
 			for(term <- line.split(" ")) {
 				if (term(0) == '\"')
 					list += new Atom(term.replace("\"", ""))
 				else
 					list += new Atom(term.toInt)
 			}
-			//val t = new ⦿ (list)
-			//val f = new Formula(list)
-			kb.addFormula(new Formula(list))
+			val f = new Formula()
+			f.atoms = list
+			kb.addFormula(f)
 		}
+
+		println("Formulas read into KB.")
 
 		// println(cantonize("你锺意做乜？"))
 		println(cantonize("乜"))
@@ -45,16 +47,24 @@ object Genifer {
 
 		// for each command, the jug is the single goal
 		// command = goal = Formula
-		var list = new java.util.ArrayList[Atom]
+		var list = new util.LinkedList[Atom]
 		list += new Atom(1000)
 		list += new Atom(-1)
 		for(char <- str) {
 				list += new Atom(char.toString)
 		}
-		val command = new Formula(list)
+		println("list atoms: ", list)
+		val command1 = new ∏(list)
+		println("formula atoms: ", command1.atoms)
+		val command = new Formula()
+		command.atoms = list
+		println("command atoms: ", command.atoms)
 
 		// jug should be a list of Formulas, in this case just 1
-		val mesh = mapReduce.map(kb, List(command))
+		val jug = List(command)
+		for (jugItem <- jug)
+			println("jug[i] atoms: ", jugItem.atoms)
+		val mesh = mapReduce.map(kb, jug)
 
 		// matching returns the resulting 'graph' or mesh
 		val answer = mapReduce.reduce(mesh)

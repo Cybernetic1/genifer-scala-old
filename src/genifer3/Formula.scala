@@ -15,9 +15,22 @@ class ∏  {
     this.atoms = list
   }
 
-  def unify(t: ∏): Subs = {
-    val result: Subs = null
-    result
+  // def unify(t: ∏): Subs = {
+  //   val result: Subs = null
+  //   result
+  // }
+
+  def headOption : Option[Atom] = {
+    atoms.headOption
+  }
+
+  def isEmpty : Boolean = {
+    atoms.isEmpty
+  }
+
+  def tail : ∏ = {
+    atoms = atoms.tail
+    this
   }
 }
 
