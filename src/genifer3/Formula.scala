@@ -29,8 +29,19 @@ class ∏  {
   }
 
   def tail : ∏ = {
-    atoms = atoms.tail
-    this
+    val result : ∏ = new ∏()
+    result.atoms = atoms.tail
+    result
+  }
+
+  override def toString : String = {
+    var str : String = ""
+    for (a <- atoms)
+      if (a.index == 0)
+        str += a.str + ", "
+      else
+        str += a.index.toString + ", "
+    str
   }
 }
 
@@ -55,4 +66,5 @@ class Formula extends ∐ {
     this()
     new ∏ (list)
   }
+
 }

@@ -92,77 +92,76 @@ class Unify {
               unify(r1, r2, '-', new Sub(a1_, a2_)))
 
         // A variable (X) on the left is consuming
-        //   1	(cond
-        //      (and (const? a1) (const? a2) (test= a1 a2))
-        //      (fork-subs
-        //  ;; X ends and return to freshness
-        //    (add-sub sub
-        //      (unify r1 r2 0 ()))
-        //  ;; X consumes a2
-        //  (unify t1 r2 1 (cons a2 sub)))
-        //  (and (const? a1) (const? a2) (test-not= a1 a2))
-        //  ;; X must consume a2
-        //    (unify t1 r2 1 (cons a2 sub))
-        //  (and (const? a1) (variable? a2))
-        //  (fork-subs
-        //  ;; X consumes a2
-        //  (unify t1 r2 1 (cons a2 sub))
-        //  ;; X ends, a2 consumes a1
-        //  (add-sub sub
-        //    (unify r1 r2 -1 (list a1,a2))))
-        //  (and (variable? a1) (const? a2))
-        //  (fork-subs
-        //  ;; X consumes a2
-        //  (unify t1 r2 1 (cons a2 sub))
-        //  ;; X ends, a1 consumes a2
-        //  (add-sub sub
-        //    (unify r1 r2 1 (list a2,a1))))
-        //  :else
-        //  ;; X consumes a2, OR a1 consumes a2, OR a2 consumes a1
-        //    (fork-subs
-        //      (unify t1 r2 1 (cons a2 sub))
-        //  (fork-subs
-        //    (add-sub sub
-        //      (unify r1 r2 1 (list a2,a1)))
-        //  (add-sub sub
-        //    (unify r1 r2 -1 (list a1,a2))))))
+        case '+' =>
+          if (a1_.isConst && a2_.isConst && testEq(a1_, a2_))
+            forkSubs(
+              // X ends; return to freshness
+              addSub(sub,
+                unify(r1, r2, '0', new Sub())),
+              // X consumes a2
+              unify(t1, r2, '+', sub :+ a2_))
+          else if (a1_.isConst && a2_.isConst && testNotEq(a1_, a2_))
+            // X must consume a2
+            unify(t1, r2, '+', sub :+ a2_)
+          else if (a1_.isVariable && a2_.isConst)
+            forkSubs(
+              // X consumes a2
+              unify(t1, r2, '+', sub :+ a2_),
+              // X ends, a1 consumes a2
+              addSub(sub,
+                unify(r1, r2, '+', new Sub(a1_, a2_))))
+          else if (a1_.isConst && a2_.isVariable)
+            forkSubs(
+              // X consumes a2
+              unify(t1, r2, '+', sub :+ a2_),
+              // X ends, a2 consumes a1
+              addSub(sub,
+                unify(r1, r2, '-', new Sub(a1_, a2_))))
+          else
+          // X consumes a2, OR a1 consumes a2, OR a2 consumes a1
+            forkSubs(
+              unify(t1, r2, '+', sub :+ a2_),
+              forkSubs(
+                addSub(sub,
+                  unify(r1, r2, '+', new Sub(a2_, a1_))),
+              addSub(sub,
+                unify(r1, r2, '-', new Sub(a1_, a2_)))))
 
-        //  ;; A variable (Y) on the right is consuming -- mirrors case 1
-        //  -1	(cond
-        //    (and (const? a1) (const? a2) (test= a1 a2))
-        //    (fork-subs
-        //  ;; Y ends and return to freshness
-        //    (add-sub sub
-        //      (unify r1 r2 0 ()))
-        //  ;; Y consumes a1
-        //  (unify r1 t2 -1 (cons a1 sub)))
-        //  (and (const? a1) (const? a2) (test-not= a1 a2))
-        //  ;; Y must consume a1
-        //    (unify r1 t2 -1 (cons a1 sub))
-        //  (and (const? a1) (variable? a2))
-        //  (fork-subs
-        //  ;; Y consumes a1
-        //  (unify r1 t2 -1 (cons a1 sub))
-        //  ;; Y ends, a2 consumes a1
-        //  (add-sub sub
-        //    (unify r1 r2 -1 (list a1,a2))))
-        //  (and (variable? a1) (const? a2))
-        //  (fork-subs
-        //  ;; Y consumes a1
-        //  (unify r1 t2 -1 (cons a1 sub))
-        //  ;; Y ends, a1 consumes a2
-        //  (add-sub sub
-        //    (unify r1 r2 1 (list a2,a1))))
-        //  :else
-        //  ;; Y consumes a1, a1 consumes a2, or a2 consumes a1
-        //    (fork-subs
-        //      (unify r1 t2 -1 (cons a1 sub))
-        //      (fork-subs
-        //        (add-sub sub
-        //          (unify r1 r2 1 (list a2,a1)))
-        //  (add-sub sub
-        //    (unify r1 r2 -1 (list a1,a2))))))
-        //  )))))
+        // A variable (Y) on the right is consuming -- mirrors case 1
+        case '-' =>
+          if (a1_.isConst && a2_.isConst && testEq(a1_, a2_))
+            forkSubs(
+              // Y ends; return to freshness
+              addSub(sub,
+                unify(r1, r2, '0', new Sub())),
+              // Y consumes a1
+              unify(r1, t2, '-', sub :+ a1_))
+          else if (a1_.isConst && a2_.isConst && testNotEq(a1_, a2_))
+          // Y must consume a1
+            unify(r1, t2, '-', sub :+ a1_)
+          else if (a1_.isConst && a2_.isVariable)
+            forkSubs(
+              // Y consumes a1
+              unify(r1, t2, '-', sub :+ a1_),
+              // Y ends, a2 consumes a1
+              addSub(sub,
+                unify(r1, r2, '-', new Sub(a1_, a2_))))
+          else if (a1_.isVariable && a2_.isConst)
+            forkSubs(
+              // Y consumes a1
+              unify(r1, t2, '-', sub :+ a1_),
+              // Y ends, a1 consumes a2
+              addSub(sub,
+                unify(r1, r2, '+', new Sub(a2_, a1_))))
+          else
+          // Y consumes a1, OR a1 consumes a2, OR a2 consumes a1
+            forkSubs(
+              unify(r1, t2, '-', sub :+ a1_),
+              forkSubs(
+                addSub(sub,
+                  unify(r1, r2, '+', new Sub(a2_, a1_))),
+                addSub(sub,
+                  unify(r1, r2, '-', new Sub(a1_, a2_)))))
       }
     }
   }
@@ -211,7 +210,21 @@ class Unify {
     }
 
     def isEmpty: Boolean = {
-      atoms.isEmpty
+      this.atoms == null || this.atoms.isEmpty
+    }
+
+    override def toString: String = {
+      var str : String = ""
+      if (this.atoms == null)
+        "[]"
+      else {
+        for {a <- this.atoms}
+          if (a.index == 0)
+            str += a.str + ","
+          else
+            str += a.index.toString + ","
+        str
+      }
     }
   }
 
@@ -227,7 +240,18 @@ class Unify {
     }
 
     def isEmpty : Boolean = {
-      subs.isEmpty
+      this.subs.isEmpty
+    }
+
+    override def toString: String = {
+      var str : String = ""
+      for (csub <- subs) {
+        str += "{"
+        for (sub <- csub)
+          str += sub.toString + ";"
+        str += "}\n"
+      }
+      str
     }
   }
 
@@ -239,9 +263,9 @@ class Unify {
   // -- a compound sub is a set
   // -- OUTPUT: a combined list of compound subs
   def forkSubs(x: Option[Subs], y: Option[Subs]): Option[Subs] = {
-    if (x == None)
+    if (x.isEmpty)
       y
-    else if (y == None)
+    else if (y.isEmpty)
       x
     else {
       val s = new Subs()
@@ -256,25 +280,21 @@ class Unify {
   //           y is a list of compound subs, ie, a list of sets
   // -- OUTPUT: a list of compound subs
   def addSub(x: Sub, y: Option[Subs]): Option[Subs] = {
-    // if (x == None)
-    //   None
-    // else if (y == None)
-    //   None
-    if (x.isEmpty)
+    if (y.isEmpty)
+      None
+    else if (x.isEmpty)
       y
-    else if (y.isEmpty)
-      Some(new Subs(x))
+    else if (y.orNull.isEmpty)
+      Some(new Subs(x))   // create compound sub from a single sub
     else {
       val s = new Subs()
       //for each compound sub in y
-      s.subs = y.orNull.subs.map(y1 =>
-        if (y1.head.isEmpty)
+      s.subs = y.orNull.subs.map(csub =>
+        if (csub.head.isEmpty)
           Set(x)
         else
         // do the set union
-        // union(Set(x), y1)
-          Set(x) ++ y1
-      )
+          Set(x) ++ csub)
       Some(s)
     }
   }
