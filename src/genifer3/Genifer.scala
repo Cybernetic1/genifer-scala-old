@@ -1,7 +1,7 @@
 // To-do:
-// -- map jug to KB
+// -- map has to return "mesh collection"
 // -- reduce
-// add 2 key Formulas to KB
+// -- add 2 key Formulas to KB
 
 package genifer3
 
@@ -15,7 +15,7 @@ object Genifer {
 		println("This is Genifer.")
 
 		// Read KB from file
-		val filename = "test/Cantonese-Mandarin-dictionary.txt"
+		val filename = "test/Cantonese-Mandarin-dictionary.txt"		// for testing
 		Source.fromFile(filename).getLines().foreach( line =>
 			{
 			println(line)
@@ -31,19 +31,20 @@ object Genifer {
 			kb.addFormula(f)
 			})
 
-//		for(line <- Source.fromFile(filename).getLines()) {
-//			println(line)
-//			var list: List[Atom] = List()
-//			for(term <- line.split(" ")) {
-//				if (term(0) == '\"')
-//					list ::= new Atom(term.replace("\"", ""))
-//				else
-//					list ::= new Atom(term.toInt)
-//			}
-//			val f = new Formula()
-//			f.atoms = list
-//			kb.addFormula(f)
-//		}
+		// Alternatively:
+		//		for(line <- Source.fromFile(filename).getLines()) {
+		//			println(line)
+		//			var list: List[Atom] = List()
+		//			for(term <- line.split(" ")) {
+		//				if (term(0) == '\"')
+		//					list ::= new Atom(term.replace("\"", ""))
+		//				else
+		//					list ::= new Atom(term.toInt)
+		//			}
+		//			val f = new Formula()
+		//			f.atoms = list
+		//			kb.addFormula(f)
+		//		}
 
 		println("Formulas read into KB.")
 
