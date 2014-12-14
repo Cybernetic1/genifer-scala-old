@@ -27,7 +27,10 @@ class MapReduce {
   // **** Reduce: from a mesh of relations find the truth of the goal
   // OUTPUT: a Formula + Truth
   def reduce(mesh: List[Formula]): Formula = {
-    mesh.head   // for now, the mesh returns the single result
+    if (mesh.nonEmpty)
+      mesh.head   // for now, the mesh returns the single result
+    else
+      null
   }
 
   // **** Perform an action

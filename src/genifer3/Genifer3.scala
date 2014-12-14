@@ -1,13 +1,12 @@
 // To-do:
-// -- map has to return "mesh collection"
-// -- reduce
+// --
 // -- add 2 key Formulas to KB
 
 package genifer3
 
 import scala.io.Source
 
-object Genifer {
+object Genifer3 {
 
 	var kb = new KB()
 
@@ -15,7 +14,7 @@ object Genifer {
 		println("This is Genifer.")
 
 		// Read KB from file
-		val filename = "test/Cantonese-Mandarin-dictionary.txt"		// for testing
+		val filename = "/home/yky/scala-workplace/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
 		Source.fromFile(filename).getLines().foreach( line =>
 			{
 			println(line)
@@ -48,8 +47,8 @@ object Genifer {
 
 		println("Formulas read into KB.")
 
-		// println(cantonize("你锺意做乜？"))
 		println(cantonize("乜"))
+		println(cantonize("你锺意做乜？"))
 	}
 
 	// ***** Convert Mandarin Chinese string to Cantonese
@@ -81,6 +80,9 @@ object Genifer {
 
 		// matching returns the resulting 'graph' or mesh
 		val answer = mapReduce.reduce(mesh)
-		mapReduce.action(answer)
+		if (answer != null)
+			mapReduce.action(answer)
+		else
+			null
 	}
 }

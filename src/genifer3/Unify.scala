@@ -29,7 +29,7 @@ class Unify {
 
   // Main algorithm
   // The main idea is to "eat" (consume) the formulas from their heads,
-  // like 2 Pacmans:
+  // like 2 Pacmen:
   //      ᗧ X loves Y       ᗧ john loves mary
   // and compare the heads and decide what to do.
   // The rest is pretty straightforward.

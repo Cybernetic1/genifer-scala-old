@@ -2,8 +2,6 @@ package genifer3
 
 // Store KB as a simple array, for now
 class KB {
-	val c = new Atom(1000)		// concept for "Cantonese"
-
 	var kb: List[Formula] = List()
 
 	def addFormula(f: Formula): Unit = {
