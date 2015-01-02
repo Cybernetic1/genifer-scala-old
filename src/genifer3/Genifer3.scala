@@ -1,6 +1,12 @@
 // To-do:
-// --
-// -- add 2 key Formulas to KB
+// -- Cantonese test
+//	* unify changed to matching
+//	* superclass
+// -- micro-actions
+//	* actions are just a kind of Atom
+//	* if we don't have variables, actions can have negative indexes
+//	* perform actions
+// -- learning module
 
 package genifer3
 

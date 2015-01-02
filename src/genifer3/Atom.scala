@@ -8,8 +8,8 @@ package genifer3
 // to hold data items as Strings.
 // Such Atoms are not concepts and they have no "place" in conceptual space.
 
-// If the index is negative, it represents a Variable.
-// Variables are also not concepts.
+// If the index is negative, it represents a Variable.  Variables are also not concepts.
+// (This feature is now deprecated as variables are eliminated entirely)
 
 class Atom {
   var index: Int = 0
@@ -29,16 +29,19 @@ class Atom {
     this.str = s
   }
 
+  // Is x a concept?
+  def isConcept: Boolean = {
+    this.index > 0
+  }
+
+  // * Deprecated *
   // Is x a constant?
-  // At this point x must be Atom (defined in Java)
-  // Return Yes if x.index >= 0
   def isConst: Boolean = {
     this.index >= 0
   }
 
+  // * Deprecated *
   // Is x a variable?
-  // At this point x must be Atom (defined in Java)
-  // Return Yes if x.index < 0
   def isVariable: Boolean = {
     this.index < 0
   }

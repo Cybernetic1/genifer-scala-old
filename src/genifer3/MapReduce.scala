@@ -4,20 +4,19 @@ class MapReduce {
 
   // OUTPUT: a "mesh" which is a List of Formulas
   def map(kb: KB, jug: List[Formula]): List[Formula] = {
-    val u = new Unify()
     var mesh : List[Formula] = List()
 
     for (kbItem <- kb.kb) {
       for (jugItem <- jug) {
         println("jug item = ", jugItem.toString)
         println("KB item = ", kbItem.toString)
-        val result = u.unify(jugItem, kbItem, '0', new u.Sub())
+        val result = Matching.matching(jugItem, kbItem)
         println("result:")
-        println(result.getOrElse("false").toString)
+        println(result.toString)
         println("\n********\n")
 
         // if match, collect matched results
-        if (result.nonEmpty)
+        if (result)
           mesh ::= kbItem
       }
     }

@@ -12,7 +12,8 @@ class KB {
 // Concepts dictionary: Int -> String
 class dictionary {
 	val dictMap = Map[Int, String](
-		999  -> "->",
+		998  -> "->",			// implication arrow, not sure if useful here
+		999  -> "Everything",
 		1000 -> "CantoneseWord",
 		1001 -> "CantonizeSentence",
 		1002 -> "CantonizeWord"
