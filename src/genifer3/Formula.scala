@@ -3,11 +3,11 @@ package genifer3
 // Term  = ∏ Atoms              (Term = list of Atoms)
 // Union = ∐ ∏                  (disjoint union of Terms)
 // Formula = ∏ | ∐
-//           | Formula → Formula
-//           | ⋀ Formulas       (probabilistic AND)
+//           | ⋀ Formulas → Formula    (probabilistic conditional)
+//           | Formula = Formula       (equation)
 
 // ∏ = Term = list of Atoms
-class ∏  {
+class ∏ {
   var atoms: Seq[Atom] = null
 
   def this(list: Seq[Atom]) {

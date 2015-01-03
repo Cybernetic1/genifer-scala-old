@@ -1,7 +1,7 @@
 // To-do:
 // -- Cantonese test
-//	* unify changed to matching
-//	* superclass
+//	* what is the program?
+//  * seems to require equations
 // -- micro-actions
 //	* actions are just a kind of Atom
 //	* if we don't have variables, actions can have negative indexes
@@ -15,41 +15,61 @@ import scala.io.Source
 object Genifer3 {
 
 	var kb = new KB()
+	var rewriter = new Rewriting()
 
 	def main(args: Array[String]) {
 		println("This is Genifer.")
 
 		// Read KB from file
+
 		val filename = "/home/yky/scala-workplace/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
-		Source.fromFile(filename).getLines().foreach( line =>
-			{
-			println(line)
-			val list = line.split(" ").toList.map { term =>
-				if (term(0) == '\"')
-					new Atom(term.replace("\"", ""))
-				else
-					new Atom(term.toInt)
+		for(line <- Source.fromFile(filename).getLines()) {
+			if (line(0) != ';') {
+				println(line)
+				var isEq: Boolean = false
+				var list: List[Atom] = List()
+				val t1 = new ∏()
+
+				for (term <- line.split(" ")) {
+					if (term(0) == '\"')
+						list ::= new Atom(term.replace("\"", ""))
+					else if (term == "=") {
+						isEq = true
+						t1.atoms = list
+						list = List()
+					}
+					else
+						list ::= new Atom(term.toInt)
 				}
 
-			val f = new Formula()
-			f.atoms = list
-			kb.addFormula(f)
-			})
+				if (isEq) {
+					val t2 = new ∏()
+					t2.atoms = list
+					rewriter.addEquation(t1, t2)
+				}
+				else {
+					val f2 = new Formula()
+					f2.atoms = list
+					kb.addFormula(f2)
+				}
+			}
+		}
 
-		// Alternatively:
-		//		for(line <- Source.fromFile(filename).getLines()) {
+		// Alternative code (old):
+		//		Source.fromFile(filename).getLines().foreach( line =>
+		//			{
 		//			println(line)
-		//			var list: List[Atom] = List()
-		//			for(term <- line.split(" ")) {
+		//			val list = line.split(" ").toList.map { term =>
 		//				if (term(0) == '\"')
-		//					list ::= new Atom(term.replace("\"", ""))
+		//					new Atom(term.replace("\"", ""))
 		//				else
-		//					list ::= new Atom(term.toInt)
-		//			}
+		//					new Atom(term.toInt)
+		//				}
+		//
 		//			val f = new Formula()
 		//			f.atoms = list
 		//			kb.addFormula(f)
-		//		}
+		//			})
 
 		println("Formulas read into KB.")
 

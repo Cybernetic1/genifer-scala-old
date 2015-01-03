@@ -34,6 +34,16 @@ class Atom {
     this.index > 0
   }
 
+  def ==(a: Atom) : Boolean = {
+    if (this.index == 0)
+      if (a.index == 0)
+        a.str == this.str
+      else
+        false
+    else
+      a.index == this.index
+  }
+
   // * Deprecated *
   // Is x a constant?
   def isConst: Boolean = {
