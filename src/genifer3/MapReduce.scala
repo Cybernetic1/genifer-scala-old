@@ -1,5 +1,7 @@
 package genifer3
 
+import genifer3.FormulaType._
+
 class MapReduce {
 
   // OUTPUT: a "mesh" which is a List of Formulas
@@ -10,14 +12,23 @@ class MapReduce {
       for (jugItem <- jug) {
         println("jug item = ", jugItem.toString)
         println("KB item = ", kbItem.toString)
-        val result = Matching.matching(jugItem, kbItem)
+
+        // Here we may perform either matching or rewriting depending on KB item's type
+        val result =
+        if (kbItem.Type == Equation) {
+          Rewriting.rewrite(jugItem.asInstanceOf[∏], kbItem.asInstanceOf[Equation])
+        }
+        else if (kbItem.Type == ∏) {
+          Matching.matching(jugItem.asInstanceOf[∏], kbItem.asInstanceOf[∏])
+        }
         println("result:")
-        println(result.toString)
+        if (result != null)
+          println(result.toString)
         println("\n********\n")
 
         // if match, collect matched results
-        if (result)
-          mesh ::= kbItem
+        if (result != null)
+          mesh ::= result.asInstanceOf[Formula]
       }
     }
     mesh
@@ -34,8 +45,8 @@ class MapReduce {
 
   // **** Perform an action
   // OUTPUT: a data item
-  def action(command: Formula): String = {
-    command.atoms(1).str
+  def action(answer: Formula): String = {
+    answer.asInstanceOf[∏].atoms(0).str
   }
 
 }

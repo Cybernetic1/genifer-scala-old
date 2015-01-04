@@ -1,7 +1,7 @@
 // To-do:
 // -- Cantonese test
 //	* what is the program?
-//  * seems to require equations
+//  * move rewriting into MapReduce framework
 // -- micro-actions
 //	* actions are just a kind of Atom
 //	* if we don't have variables, actions can have negative indexes
@@ -15,7 +15,6 @@ import scala.io.Source
 object Genifer3 {
 
 	var kb = new KB()
-	var rewriter = new Rewriting()
 
 	def main(args: Array[String]) {
 		println("This is Genifer.")
@@ -28,7 +27,7 @@ object Genifer3 {
 				println(line)
 				var isEq: Boolean = false
 				var list: List[Atom] = List()
-				val t1 = new ∏()
+				val t1 = new ∏
 
 				for (term <- line.split(" ")) {
 					if (term(0) == '\"')
@@ -43,12 +42,12 @@ object Genifer3 {
 				}
 
 				if (isEq) {
-					val t2 = new ∏()
+					val t2 = new ∏
 					t2.atoms = list
-					rewriter.addEquation(t1, t2)
+					kb.addFormula(new Equation(t1, t2))
 				}
 				else {
-					val f2 = new Formula()
+					val f2 = new ∏
 					f2.atoms = list
 					kb.addFormula(f2)
 				}
@@ -73,8 +72,8 @@ object Genifer3 {
 
 		println("Formulas read into KB.")
 
-		println(cantonize("乜"))
-		println(cantonize("你锺意做乜？"))
+		println(cantonize("什么"))
+		println(cantonize("你喜欢做什么？"))
 	}
 
 	// ***** Convert Mandarin Chinese string to Cantonese
@@ -86,15 +85,16 @@ object Genifer3 {
 		// for each command, the jug is the single goal
 		// command = goal = Formula
 		var list : List[Atom] =  List()
+		// for(char <- str) {
+		//		list :+= new Atom(char.toString)
+		// }
+		list :+= new Atom(str)
 		list :+= new Atom(1000)
-		list :+= new Atom(-1)
-		for(char <- str) {
-				list :+= new Atom(char.toString)
-		}
+
 		println("list atoms: ", list)
 		val command1 = new ∏(list)
-		println("formula = ", command1.toString)
-		val command = new Formula()
+		println("term = ", command1.toString)
+		val command = new ∏
 		command.atoms = list
 		println("command = ", command.toString)
 
