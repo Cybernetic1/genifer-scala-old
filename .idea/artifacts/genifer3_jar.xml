@@ -1,10 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="genifer:jar">
+  <artifact type="jar" name="genifer3:jar">
     <output-path>$PROJECT_DIR$/out</output-path>
-    <root id="archive" name="genifer.jar">
+    <root id="archive" name="genifer3.jar">
       <element id="module-output" name="genifer3" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.10.3/scala-reflect-2.10.3.jar" path-in-jar="/" />
+      <element id="library" level="application" name="scala-sdk-2.10.3" />
     </root>
   </artifact>
 </component>
