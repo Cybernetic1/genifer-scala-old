@@ -1,7 +1,6 @@
 // To-do:
 // -- Cantonese test
 //	* what is the program?
-//  * move rewriting into MapReduce framework
 // -- micro-actions
 //	* actions are just a kind of Atom
 //	* if we don't have variables, actions can have negative indexes
@@ -21,7 +20,7 @@ object Genifer3 {
 
 		// Read KB from file
 
-		val filename = "/home/yky/scala-workplace/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
+		val filename = "/home/yky/scala/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
 		for(line <- Source.fromFile(filename).getLines()) {
 			if (line(0) != ';') {
 				println(line)
@@ -70,9 +69,11 @@ object Genifer3 {
 		//			kb.addFormula(f)
 		//			})
 
-		println("Formulas read into KB.")
+		println("Formulas read into KB.\n\n")
 
 		println(cantonize("什么"))
+
+		println("\n\nSecond task:\n\n")
 		println(cantonize("你喜欢做什么？"))
 	}
 
