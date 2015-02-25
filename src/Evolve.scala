@@ -1,25 +1,25 @@
-// Algorithm:
+// Standard evolutionary algorithm:
 // ==============================
-// initialize population
-// until success:
-//    select parents
-//    recombine, mutate
-//    evaluate
-//    select survivors
+// Initialize population
+// Repeat until success:
+//    Select parents
+//    Recombine, mutate
+//    Evaluate
+//    Select survivors
 // ==============================
 
 class Evolve {
 
-  // ** initialize population
-  // This is the set of KB formulas
+  // ** Initialize population
+  // This is the set of current KB formulas, no need to initialize
 
-  // until success:
-  //    ** select_parents
-  //
-  //    ** recombine
-  //    ** mutate
-  //    ** evaluate
-  //    ** select survivors
-
+  // Repeat until success:
+  //    ** Select formulas to recombine
+  //    ** Select formulas to mutate
+  //    at this point we get some new candidates
+  //    ** Evaluate new KB
+  //        test KB on new / existing examples
+  //    ** Select survivors
+  //        based on scores
 
 }
