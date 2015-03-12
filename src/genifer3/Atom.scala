@@ -56,3 +56,4 @@ class Atom {
     this.index < 0
   }
 }
+

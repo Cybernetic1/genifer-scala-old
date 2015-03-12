@@ -7,6 +7,12 @@
 //	* perform actions
 // -- learning module
 
+/*================= Implementation Notes ===================
+现在我们只有 KB。  KB 是一个序列； 那很好办。
+而且可以从序列的尾部 轻易地做到「遗忘」的功能。
+问题是有一些相对地恒久的事实。
+==========================================================*/
+
 package genifer3
 
 import scala.io.Source
@@ -14,6 +20,9 @@ import scala.io.Source
 object Genifer3 {
 
 	var kb = new KB()
+  var wmem = new WorkingMemory()
+
+  val nullAtom = new Atom(0)    // a "global" constant to signify null
 
 	def main(args: Array[String]) {
 		println("This is Genifer.")

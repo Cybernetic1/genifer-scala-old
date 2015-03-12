@@ -7,18 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="scala-sdk-2.10.3" level="application" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/clojure/genifer/target/genifer-0.1.0-SNAPSHOT-standalone.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/clojure/genifer/target/genifer-0.1.0-SNAPSHOT-standalone.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="scala-sdk-2.11.5" level="application" />
+    <orderEntry type="library" exported="" name="scala-sdk-2.11.5" level="application" />
   </component>
 </module>
