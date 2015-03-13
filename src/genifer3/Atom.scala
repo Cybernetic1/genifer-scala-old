@@ -22,11 +22,20 @@ class Atom {
     this.str = null
   }
 
-  // Creates a data Atom which is not a concept
+  // If string begins with '!', creates an ordinary Atom by looking up the concept name
+  // Otherwise creates a data Atom, ie, not a concept
   def this(s: String) {
     this()
-    this.index = 0
-    this.str = s
+
+    // if string begins with '!', look up the concept
+    if (s(0) == '!') {
+      this.index = Dictionary.invDictMap(s.substring(1))
+      this.str = null
+    }
+    else {
+      this.index = 0
+      this.str = s
+    }
   }
 
   // Is x a concept?

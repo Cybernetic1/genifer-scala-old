@@ -1,13 +1,13 @@
 package genifer3
 
-// Term  = ∏ Atoms              (∏ = Term = list of Atoms)
-// Union = ∐ ∏                  (∐ = disjoint union of Terms)
-// Formula = ∏ | ∐
+// Term  = ⊙ Atoms              (⊙ = Term = list of Atoms)
+// Union = ⊕ ⊙                  (⊕ = disjoint union of Terms)
+// Formula = ⊙ | ⊕
 //           | Term = Term             (equation)
 //           | ⋀ Formulas → Formula    (probabilistic conditional)
 
 object FormulaType extends Enumeration {
-  val ∏, ∐, Equation, Conditional = Value
+  val ⊙, ⊕, Equation, Conditional = Value
   // type FormulaType = Value
 }
 
@@ -15,9 +15,9 @@ abstract class Formula {
   val Type : FormulaType.Value
 }
 
-// ∏ = Term = list of Atoms
-class ∏ extends Formula {
-  val Type = FormulaType.∏
+// ⊙ = Term = list of Atoms
+class ⊙ extends Formula {
+  val Type = FormulaType.⊙
   var atoms: Seq[Atom] = null
 
   def this(list: Seq[Atom]) {
@@ -33,8 +33,8 @@ class ∏ extends Formula {
     atoms.isEmpty
   }
 
-  def tail : ∏ = {
-    val result : ∏ = new ∏()
+  def tail : ⊙ = {
+    val result : ⊙ = new ⊙()
     result.atoms = atoms.tail
     result
   }
@@ -50,13 +50,13 @@ class ∏ extends Formula {
   }
 }
 
-// ∐ = disjoint union of Terms
-class ∐ extends Formula {
-  val Type = FormulaType.∐
-  var union: Seq[∏] = null
+// ⊕ = disjoint union of Terms
+class ⊕ extends Formula {
+  val Type = FormulaType.⊕
+  var union: Seq[⊙] = null
 
   // Union of multiple terms
-  def this(terms: ∏ *) {
+  def this(terms: ⊙ *) {
     this()
     for (term <- terms)
       union.+:(term)
@@ -66,16 +66,16 @@ class ∐ extends Formula {
 class Equation extends Formula {
   val Type = FormulaType.Equation
 
-  var left: ∏ = null
-  var right: ∏ = null
+  var left: ⊙ = null
+  var right: ⊙ = null
 
   def this(left: Seq[Atom], right: Seq[Atom]) {
     this()
-    this.left = new ∏(left)
-    this.right = new ∏(right)
+    this.left = new ⊙(left)
+    this.right = new ⊙(right)
   }
 
-  def this(t1: ∏, t2: ∏) {
+  def this(t1: ⊙, t2: ⊙) {
     this()
     this.left = t1
     this.right = t2
@@ -97,6 +97,6 @@ class Conditional extends Formula {
 
   def this(list: Seq[Atom]) {
     this()
-    new ∏(list)
+    new ⊙(list)
   }
 }

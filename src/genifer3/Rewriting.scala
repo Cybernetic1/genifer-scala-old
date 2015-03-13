@@ -11,8 +11,8 @@ object Rewriting {
 
   // Given a term t, try to rewrite it using a given rewrite rule (equation)
   // Do we need to consider subsumption?
-  def rewrite(t: ∏, eq: Equation): ∏ = {
-    val result: ∏ = new ∏
+  def rewrite(t: ⊙, eq: Equation): ⊙ = {
+    val result: ⊙ = new ⊙
     var mismatch : Boolean = false
     // match partially
     for (i <- 0 to t.atoms.length - eq.left.atoms.length) {

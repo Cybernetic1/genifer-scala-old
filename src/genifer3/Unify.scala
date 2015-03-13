@@ -38,7 +38,7 @@ class Unify {
   //  -- sub = the partial substitution of the consuming variable
   //  -- a substitution is a list (X,A,B,C...) representing { ABC... / X }
   // OUTPUT: a list of compound substitutions, each compound substitution is a set, ie, #{...}
-  def unify(t1: ∏, t2: ∏, direction: Char, sub: Sub): Option[Subs] = {
+  def unify(t1: ⊙, t2: ⊙, direction: Char, sub: Sub): Option[Subs] = {
     val a1 = t1.headOption
     val a2 = t2.headOption
     val r1 = if (t1.isEmpty) null else t1.tail

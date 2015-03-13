@@ -17,9 +17,8 @@ package genifer3
 //    - "fuzzy" match focus with X
 
 import genifer3.Ontology.⊃
-import Genifer3.tapes
 
-class Action {
+object Action {
   // **** Perform an act
   // An act is a logic formula, beginning with an action atom
   // Available actions:
@@ -27,24 +26,24 @@ class Action {
   // * focus_next   (on tape1)
   // * append       item (to tape2)
   // * extract      (from KB to tape2)
-  def perform(act : ∏) = {
+  def perform(act : ⊙) = {
     val action : Atom = act.atoms(0)    // first Atom is the action type
     action.index match {
 
       case 100 =>                       // 100 = focus
         // Atom arg = act.atoms(1)      // argument = which list to focus
-        tapes.focus1 = 0
+        Tapes.focus1 = 0
         // "Manifest" the item under focus
         focus(null)                     // null = default to list1
 
       case 101 =>                       // 101 = move focus next
-        tapes.focus1 += 1
+        Tapes.focus1 += 1
         focus(null)
 
       case 102 =>                       // 102 = append
         // Default to tape2
         val arg = act.atoms(1)
-        tapes.tape2 :+ arg
+        Tapes.tape2 :+ arg
 
       case 103 =>                       // 103 = extract to out-tape
         // tape2 = out-tape
@@ -61,17 +60,17 @@ class Action {
   // In other words, express as logical facts, output to KB
   def focus(whichList : Atom) = {
     // express facts about the list item under focus
-    val a0 : Atom = tapes.tape1(tapes.focus1)
+    val a0 : Atom = Tapes.tape1(Tapes.focus1)
 
     // Output the single-atom formula to KB
-    val f = new ∏
+    val f = new ⊙
     f.atoms = Seq(a0)
     Genifer3.wmem.addFormula(f)
 
     // If we can look-ahead 1 atom, write formula [a0, a1] to KB
-    if (tapes.focus1 < tapes.tape1.length) {
-      val a1: Atom = tapes.tape1(tapes.focus1 + 1)
-      val f = new ∏
+    if (Tapes.focus1 < Tapes.tape1.length) {
+      val a1: Atom = Tapes.tape1(Tapes.focus1 + 1)
+      val f = new ⊙
       f.atoms = Seq(a0, a1)
       Genifer3.wmem.addFormula(f)
     }
@@ -88,13 +87,13 @@ class Action {
     var result : Option[Atom] = null
 
     for (item <- Genifer3.wmem.mem) {
-      val head = item.asInstanceOf[∏].atoms(0)
+      val head = item.asInstanceOf[⊙].atoms(0)
       if (⊃(superclass, head))
         result = Some(head)
     }
     // The extracted atom should go to the output tape.
     // Later we may also have variations of this.
-    tapes.tape2 :+ result
+    Tapes.tape2 :+ result
   }
 
 }

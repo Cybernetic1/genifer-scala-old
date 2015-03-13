@@ -9,21 +9,21 @@ import genifer3.FormulaType._
 class MapReduce {
 
   // OUTPUT: a "mesh" which is a List of Formulas
-  def map(fb: FactsBase, rb: RulesBase): List[Formula] = {
+  def map(rb: RulesBase, wmem: WorkingMemory): List[Formula] = {
     var mesh : List[Formula] = List()
 
-    for (fact <- fb.facts) {
+    for (memItem <- wmem.mem) {
       for (rule <- rb.rules) {
         println("rule item = ", rule.toString)
-        println("fact item = ", fact.toString)
+        println("fact item = ", memItem.toString)
 
         // Here we may perform either matching or rewriting depending on KB item's type
         val result =
         if (rule.Type == Equation) {
-          Rewriting.rewrite(fact.asInstanceOf[∏], rule.asInstanceOf[Equation])
+          Rewriting.rewrite(memItem.asInstanceOf[⊙], rule.asInstanceOf[Equation])
         }
-        else if (rule.Type == ∏) {
-          Matching.matching(fact.asInstanceOf[∏], rule.asInstanceOf[∏])
+        else if (rule.Type == ⊙) {
+          Matching.matching(memItem.asInstanceOf[⊙], rule.asInstanceOf[⊙])
         }
         println("result:")
         if (result != null)
@@ -50,7 +50,7 @@ class MapReduce {
   // **** Perform an action
   // OUTPUT: a data item
   def action(answer: Formula): String = {
-    answer.asInstanceOf[∏].atoms(0).str
+    answer.asInstanceOf[⊙].atoms(0).str
   }
 
 }

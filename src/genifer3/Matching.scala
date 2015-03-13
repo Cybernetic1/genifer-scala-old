@@ -55,7 +55,7 @@ object Matching {
 
   // INPUT: t1 is assumed to be more general then t2 (because t1 belongs to the rule-to-be-applied)
   // OUTPUT: Boolean, whether a substitution σ exists such that σ t1 = t2.
-  def matching(t1: ∏, t2: ∏): Boolean = {
+  def matching(t1: ⊙, t2: ⊙): Boolean = {
 
     // Main algorithm
     // The main idea is to "eat" (consume) the formulas from their heads,

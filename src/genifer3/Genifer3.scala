@@ -1,5 +1,9 @@
 // To-do:
-// -- learning module
+// -- evolutionary learning
+// -- conjunctions ⊕
+// -- partial matching of rules (store in jug?)
+// -- competitive mechanism (winner takes all) for inference results in WMem
+//      -- in fact, it seems that previous results should inhibit doubling of new results
 
 /*================= Implementation Notes ===================
 现在我们只有 KB。  KB 是一个序列； 那很好办。
@@ -16,7 +20,6 @@ object Genifer3 {
 	var fb = new FactsBase()
   var rb = new RulesBase()
   var wmem = new WorkingMemory()
-  var tapes = new Tapes()
 
   // val nullAtom = new Atom(0)    // a "global" constant to signify null
 
@@ -31,27 +34,27 @@ object Genifer3 {
 				println(line)
 				var isEq: Boolean = false
 				var list: List[Atom] = List()
-				val t1 = new ∏
+				val t1 = new ⊙
 
-				for (term <- line.split(" ")) {
-					if (term(0) == '\"')
-						list ::= new Atom(term.replace("\"", ""))
-					else if (term == "=") {
+				for (str <- line.split(" ")) {
+					if (str(0) == '\"')
+						list ::= new Atom(str.replace("\"", ""))
+					else if (str == "=") {
 						isEq = true
 						t1.atoms = list
 						list = List()
 					}
 					else
-						list ::= new Atom(term.toInt)
+						list ::= new Atom(str)
 				}
-
+        
 				if (isEq) {
-					val t2 = new ∏
+					val t2 = new ⊙
 					t2.atoms = list
 					rb.addFormula(new Equation(t1, t2))
 				}
 				else {
-					val f2 = new ∏
+					val f2 = new ⊙
 					f2.atoms = list
 					rb.addFormula(f2)
 				}
@@ -92,11 +95,12 @@ object Genifer3 {
   // 5. Extract the word from Working Memory to Out-Tape
   // 6. Repeat from step #2
   // The Map Reduce processing is as follows:
-  // 1. Initially, Tape2 contains the program
+  // 1. Initially, Tape1 contains the string to be translated
+  //               Tape2 contains the program
   // 2. Map Reduce is called, ie, Jug is applied to KB
   // 3. The
 	// This function will be called by Genifer-server.
-	// INPUT:  string to be Cantonized.
+  // For this example, the FactsBase is empty;  all work is performed on Working Memory.
   /*================= Implementation Notes ===================
   程式应该要能储存在 tape 上。
   但我们要「执行」那 tape，但似乎「顺序执行」也是一个复杂过程。
@@ -107,11 +111,13 @@ object Genifer3 {
   And the tape has to be able to store formulas, not just atoms.
   At this stage we let programs run uninterupted in a single atomic step.
   现在最重要的是要令那些 actions 可以很好地用意义分类。
+  现在似乎需要一个 run program 的方法。
   ==========================================================*/
 
 	def cantonize(str: String): String = {
 		val mapReduce = new MapReduce()
 
+    /***** old code
 		// for each command, the jug is the single goal
 		// command = goal = Formula
 		var list : List[Atom] =  List()
@@ -119,20 +125,25 @@ object Genifer3 {
 		//		list :+= new Atom(char.toString)
 		// }
 		list :+= new Atom(str)
-		list :+= new Atom(1000)
+		list :+= new Atom("!CantoneseWord")
 
 		println("list atoms: ", list)
-		val command1 = new ∏(list)
+		val command1 = new ⊙(list)
 		println("term = ", command1.toString)
-		val command = new ∏
+		val command = new ⊙
 		command.atoms = list
 		println("command = ", command.toString)
 
-		// jug should be a list of Formulas, in this case just 1
 		val jug = List(command)
 		for (jugItem <- jug)
 			println("jug[i] = ", jugItem.toString)
-		val mesh = mapReduce.map(fb, rb)
+    */
+
+    // run the program in Program Tape (Tape3)
+    Action.perform(Tapes.tape3(Tapes.progCounter))
+
+    // WMem should be a list of Formulas, in this case empty
+		val mesh = mapReduce.map(rb, wmem)
 
 		// matching returns the resulting 'graph' or mesh
 		val answer = mapReduce.reduce(mesh)
@@ -144,7 +155,7 @@ object Genifer3 {
 }
 
 // Concepts dictionary: Int -> String
-class dictionary {
+object Dictionary {
   val dictMap = Map[Int, String](
 
     // Actions
@@ -161,4 +172,7 @@ class dictionary {
     1002  -> "CantonizeWord"
 
   )
+
+  // Inverse map
+  val invDictMap = dictMap.map(_.swap)
 }
