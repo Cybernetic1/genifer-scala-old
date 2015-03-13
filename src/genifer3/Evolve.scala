@@ -1,3 +1,5 @@
+package genifer3
+
 // Standard evolutionary algorithm:
 // ==============================
 // Initialize population

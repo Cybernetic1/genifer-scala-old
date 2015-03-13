@@ -37,9 +37,10 @@ class Action {
   // **** Perform an act
   // An act is a logic formula, beginning with an action atom
   // Available actions:
-  // * focus        list1/list2
-  // * focus_next   list1/list2
-  // * append       list1/list2, item
+  // * focus        (on tape1)
+  // * focus_next   (on tape1)
+  // * append       item (to tape2)
+  // * extract      (from KB to tape2)
   def perform(act : ∏) = {
     val action : Atom = act.atoms(0)    // first Atom is the action type
     action.index match {
@@ -55,9 +56,14 @@ class Action {
         focus(null)
 
       case 102 =>                       // 102 = append
-        // Default to list2
+        // Default to tape2
         val arg = act.atoms(1)
         tape2 :+ arg
+
+      case 103 =>                       // 103 = extract to out-tape
+        // tape2 = out-tape
+        val arg = act.atoms(1)
+        extract(arg)
 
       case _ =>
         null
@@ -89,18 +95,20 @@ class Action {
   // The extracted result should be stored on tape, which would be an atom.
   // So the question is how to extract one atom from a formula.
   // Perhaps if a formula is a sequence of conjunctions we simply pick the last atom
-  // in the sequence that is subsumed by the superclass?  But this may be ambiguous.
+  // in the sequence that is subsumed by the superclass?  But this may get ambiguous.
   // At this point, just assume the facts are single-atom.  At a later stage, we can
   // use multi-atom superclasses to extract facts.
   def extract(superclass : Atom) = {
-    var result = Genifer3.nullAtom
+    var result : Option[Atom] = null
 
     for (item <- Genifer3.wmem.mem) {
       val head = item.asInstanceOf[∏].atoms(0)
       if (⊃(superclass, head))
-        result = head
+        result = Some(head)
     }
-    result
+    // The extracted atom should go to the output tape.
+    // Later we may also have variations of this.
+    tape2 :+ result
   }
 
 }

@@ -1,10 +1,6 @@
 // To-do:
 // -- Cantonese test
 //	* what is the program?
-// -- micro-actions
-//	* actions are just a kind of Atom
-//	* if we don't have variables, actions can have negative indexes
-//	* perform actions
 // -- learning module
 
 /*================= Implementation Notes ===================
@@ -22,7 +18,7 @@ object Genifer3 {
 	var kb = new KB()
   var wmem = new WorkingMemory()
 
-  val nullAtom = new Atom(0)    // a "global" constant to signify null
+  // val nullAtom = new Atom(0)    // a "global" constant to signify null
 
 	def main(args: Array[String]) {
 		println("This is Genifer.")
@@ -87,8 +83,30 @@ object Genifer3 {
 	}
 
 	// ***** Convert Mandarin Chinese string to Cantonese
-	// This will be called by Genifer-server
-	// INPUT:  string to be Cantonized
+  // This is an example where we apply Map Reduce to a small task.
+  // The "program" is:
+  // 1. Initially, the In-Tape contains the sentence to be translated
+  // 2. Focus on the In-Tape's first position
+  // 3. ("Focus" automatically causes the word to be recognized)
+  // 4. Cantonize the recognized word (which is now in Working Memory)
+  // 5. Extract the word from Working Memory to Out-Tape
+  // 6. Repeat from step #2
+  // The Map Reduce processing is as follows:
+  // 1. Initially, Tape2 contains the program
+  // 2. Map Reduce is called, ie, Jug is applied to KB
+  // 3. The
+	// This function will be called by Genifer-server.
+	// INPUT:  string to be Cantonized.
+  /*================= Implementation Notes ===================
+  程式应该要能储存在 tape 上。
+  但我们要「执行」那 tape，但似乎「顺序执行」也是一个复杂过程。
+  但如果连顺序执行的能力也没有，则又变成鸡生蛋问题。
+  问题是「顺序执行」似乎不是一个原子动作，因为需要有中断的能力。
+  Another way to do program sequences is via conditionals.
+  But it is still more natural to have programs stored on tapes.
+      
+  ==========================================================*/
+
 	def cantonize(str: String): String = {
 		val mapReduce = new MapReduce()
 
