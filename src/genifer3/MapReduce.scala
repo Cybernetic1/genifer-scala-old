@@ -2,24 +2,28 @@ package genifer3
 
 import genifer3.FormulaType._
 
+// The essence of Map Reduce is to apply a set of operations to another set of objects.
+// What we do here is to apply the set of Rules to the set of Facts.  This is similar to
+// many rule-based systems such as Soar and JESS.
+
 class MapReduce {
 
   // OUTPUT: a "mesh" which is a List of Formulas
-  def map(kb: KB, jug: List[Formula]): List[Formula] = {
+  def map(fb: FactsBase, rb: RulesBase): List[Formula] = {
     var mesh : List[Formula] = List()
 
-    for (kbItem <- kb.kb) {
-      for (jugItem <- jug) {
-        println("jug item = ", jugItem.toString)
-        println("KB item = ", kbItem.toString)
+    for (fact <- fb.facts) {
+      for (rule <- rb.rules) {
+        println("rule item = ", rule.toString)
+        println("fact item = ", fact.toString)
 
         // Here we may perform either matching or rewriting depending on KB item's type
         val result =
-        if (kbItem.Type == Equation) {
-          Rewriting.rewrite(jugItem.asInstanceOf[∏], kbItem.asInstanceOf[Equation])
+        if (rule.Type == Equation) {
+          Rewriting.rewrite(fact.asInstanceOf[∏], rule.asInstanceOf[Equation])
         }
-        else if (kbItem.Type == ∏) {
-          Matching.matching(jugItem.asInstanceOf[∏], kbItem.asInstanceOf[∏])
+        else if (rule.Type == ∏) {
+          Matching.matching(fact.asInstanceOf[∏], rule.asInstanceOf[∏])
         }
         println("result:")
         if (result != null)

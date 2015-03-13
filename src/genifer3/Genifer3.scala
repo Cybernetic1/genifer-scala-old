@@ -1,6 +1,4 @@
 // To-do:
-// -- Cantonese test
-//	* what is the program?
 // -- learning module
 
 /*================= Implementation Notes ===================
@@ -15,15 +13,17 @@ import scala.io.Source
 
 object Genifer3 {
 
-	var kb = new KB()
+	var fb = new FactsBase()
+  var rb = new RulesBase()
   var wmem = new WorkingMemory()
+  var tapes = new Tapes()
 
   // val nullAtom = new Atom(0)    // a "global" constant to signify null
 
 	def main(args: Array[String]) {
 		println("This is Genifer.")
 
-		// Read KB from file
+		// Read Rules from file
 
 		val filename = "/home/yky/scala/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
 		for(line <- Source.fromFile(filename).getLines()) {
@@ -48,12 +48,12 @@ object Genifer3 {
 				if (isEq) {
 					val t2 = new ∏
 					t2.atoms = list
-					kb.addFormula(new Equation(t1, t2))
+					rb.addFormula(new Equation(t1, t2))
 				}
 				else {
 					val f2 = new ∏
 					f2.atoms = list
-					kb.addFormula(f2)
+					rb.addFormula(f2)
 				}
 			}
 		}
@@ -71,7 +71,7 @@ object Genifer3 {
 		//
 		//			val f = new Formula()
 		//			f.atoms = list
-		//			kb.addFormula(f)
+		//			rules.addFormula(f)
 		//			})
 
 		println("Formulas read into KB.\n\n")
@@ -104,7 +104,9 @@ object Genifer3 {
   问题是「顺序执行」似乎不是一个原子动作，因为需要有中断的能力。
   Another way to do program sequences is via conditionals.
   But it is still more natural to have programs stored on tapes.
-      
+  And the tape has to be able to store formulas, not just atoms.
+  At this stage we let programs run uninterupted in a single atomic step.
+  现在最重要的是要令那些 actions 可以很好地用意义分类。
   ==========================================================*/
 
 	def cantonize(str: String): String = {
@@ -130,7 +132,7 @@ object Genifer3 {
 		val jug = List(command)
 		for (jugItem <- jug)
 			println("jug[i] = ", jugItem.toString)
-		val mesh = mapReduce.map(kb, jug)
+		val mesh = mapReduce.map(fb, rb)
 
 		// matching returns the resulting 'graph' or mesh
 		val answer = mapReduce.reduce(mesh)
@@ -139,4 +141,24 @@ object Genifer3 {
 		else
 			null
 	}
+}
+
+// Concepts dictionary: Int -> String
+class dictionary {
+  val dictMap = Map[Int, String](
+
+    // Actions
+    100   -> "focus",
+    101   -> "focus-next",
+    102   -> "append",
+    103   -> "extract",
+
+    // General concepts
+    998   -> "->",			// implication arrow, not sure if useful here
+    999   -> "Everything",
+    1000  -> "CantoneseWord",
+    1001  -> "CantonizeSentence",
+    1002  -> "CantonizeWord"
+
+  )
 }

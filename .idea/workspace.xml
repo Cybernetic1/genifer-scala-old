@@ -7,9 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7272385c-8eb2-465e-82eb-b3f13e685495" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Evolve.scala" afterPath="$PROJECT_DIR$/src/genifer3/Evolve.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/genifer3/FactsBase.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/genifer3/RulesBase.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/genifer3/Tapes.scala" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/genifer3/Formula.java.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/genifer3/KB.scala" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Genifer3-architecture.png" afterPath="$PROJECT_DIR$/docs/Genifer3-architecture.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/Action.scala" afterPath="$PROJECT_DIR$/src/genifer3/Action.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/Genifer3.scala" afterPath="$PROJECT_DIR$/src/genifer3/Genifer3.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/MapReduce.scala" afterPath="$PROJECT_DIR$/src/genifer3/MapReduce.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="genifer.iws" />
@@ -35,23 +41,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Action.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/genifer3/Action.scala">
+      <file leaf-file-name="Genifer3.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer3.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2520">
-              <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="0.37383798" vertical-offset="1810" max-vertical-offset="3570">
+              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Genifer3.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer3.scala">
+      <file leaf-file-name="Action.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/genifer3/Action.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4561753" vertical-offset="1539" max-vertical-offset="3108">
-              <caret line="106" column="2" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2226">
+              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#480#506#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,8 +68,8 @@
       <file leaf-file-name="MapReduce.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/genifer3/MapReduce.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1218">
-              <caret line="43" column="3" selection-start-line="43" selection-start-column="3" selection-end-line="43" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1302">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,13 +99,16 @@
         <option value="$PROJECT_DIR$/test/Cantonese-Mandarin-dictionary.txt" />
         <option value="$PROJECT_DIR$/src/genifer3/Formula.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Rewriting.scala" />
-        <option value="$PROJECT_DIR$/src/genifer3/MapReduce.scala" />
         <option value="$PROJECT_DIR$/.idea/artifacts/genifer_jar.xml" />
         <option value="$PROJECT_DIR$/src/Evolve.scala" />
-        <option value="$PROJECT_DIR$/src/genifer3/KB.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/WorkingMemory.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Atom.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Action.scala" />
+        <option value="$PROJECT_DIR$/src/genifer3/Tapes.scala" />
+        <option value="$PROJECT_DIR$/src/genifer3/FactsBase.scala" />
+        <option value="$PROJECT_DIR$/src/genifer3/RulesBase.scala" />
+        <option value="$PROJECT_DIR$/src/genifer3/KB.scala" />
+        <option value="$PROJECT_DIR$/src/genifer3/MapReduce.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Genifer3.scala" />
       </list>
     </option>
@@ -152,8 +163,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,7 +253,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KB.scala" />
+              <option name="myItemId" value="Genifer3.scala" />
               <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,6 +323,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -584,7 +595,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="2" width="1050" height="1678" extended-state="1" />
+    <frame x="0" y="2" width="1050" height="1678" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -611,7 +622,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21474774" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988358" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -641,25 +652,19 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer3.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="2222">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/Matching.scala">
+    <entry file="file://$PROJECT_DIR$/src/genifer3/MapReduce.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/Unify.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6754">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="294" max-vertical-offset="1302">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -836,13 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/KB.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="616">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/Formula.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="1122">
@@ -955,13 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/KB.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.013925729" vertical-offset="0" max-vertical-offset="1508">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/Ontology.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
@@ -985,31 +976,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/WorkingMemory.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="441">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.055776894" vertical-offset="0" max-vertical-offset="1506">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/Action.scala">
+    <entry file="file://$PROJECT_DIR$/src/genifer3/RulesBase.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2520">
-          <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/genifer3/FactsBase.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11059908" vertical-offset="0" max-vertical-offset="1519">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/genifer3/Tapes.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25099602" vertical-offset="0" max-vertical-offset="1506">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/MapReduce.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1218">
-          <caret line="43" column="3" selection-start-line="43" selection-start-column="3" selection-end-line="43" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1302">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/genifer3/Action.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2226">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding>
+            <element signature="e#480#506#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer3.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4561753" vertical-offset="1539" max-vertical-offset="3108">
-          <caret line="106" column="2" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.37383798" vertical-offset="1810" max-vertical-offset="3570">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
