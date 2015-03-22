@@ -46,6 +46,12 @@ package genifer3
 import scala.collection.mutable.ListBuffer
 import scala.util.control.Breaks._
 
+// for graphics:
+import scala.swing._
+import scala.swing.event._
+import java.awt.Color
+import java.awt.Graphics2D
+
 object Evolve {
 
   // ** Initialize population
@@ -72,7 +78,7 @@ object Evolve {
     val r = new scala.util.Random
     val s = new StringBuilder
     for (i <- 1 to numBits) {
-      s.append(if (r.nextBoolean) "1" else "0")
+      s.append(if (r.nextBoolean) '1' else '0')
     }
     print("new born: ")
     printCandidate(s.toString)
@@ -106,11 +112,13 @@ object Evolve {
     val r = new scala.util.Random
     val result = new StringBuilder
 
+    // print("in: "); printCandidate(dna)
     for (c <- dna) {
       result.append(if (r.nextFloat() < rate)
                       { if (c == '1') '1' else '0' }
                     else c)
     }
+    // print("ou: "); printCandidate(result.toString())
     result.toString()
   }
 
@@ -119,7 +127,8 @@ object Evolve {
   def crossover(parent1: String, parent2: String, rate: Float): String = {
     val r = new scala.util.Random
 
-    if (r.nextFloat() >= rate) return parent1
+    if (r.nextFloat() > rate)
+      return parent1
 
     val point = r.nextInt(parent1.length - 2) + 1
     val mix = parent1.substring(0, point) ++ parent2.substring(point, parent1.length)
@@ -141,35 +150,37 @@ object Evolve {
     var children = new ListBuffer[String]
     var p1, p2: String = null
 
-    breakable { for (i <- 0 until selected.length) {
+    breakable { for (i <- 0 to selected.length) {
       p1 = selected(i)
       // p2 = if ((i % 2) == 0) selected(i+1) else selected(i-1)
       // if (i == selected.length - 1) p2 = selected(0)
       p2 = selected(r.nextInt(selected.length))
 
       val child = crossover(p1, p2, crossRate)
-      children = children :+ pointMutation(child, mutationRate)
+      children += pointMutation(child, mutationRate)
       if (children.length >= popSize) break()
     }}
     // println(children.length)
     children.toArray
   }
 
+  // Constant parameters:
+  val numBits = 64
+  val maxGens = 100
+  val popSize = 100
+  val crossRate: Float = 0.98f
+  val mutationRate: Float = 1.0f / numBits
+
+  var $pop = new Array[String](popSize)
+
   // Main algorithm for genetic search
   def evolve(): Unit = {
-    // Constant parameters:
-    val numBits = 64
-    val maxGens = 100
-    val popSize = 100
-    val crossRate: Float = 0.98f
-    val mutationRate: Float = 1.0f / numBits
-
     // initialize population
     var population = new Array[String](popSize)
     population = Array.fill(popSize)(randomBitString(numBits))
 
-    population = population.sortBy(fitness).reverse
-    for (c <- population) {
+    val population2 = population.sortBy(fitness).reverse
+    for (c <- population2) {
       print("init: ")
       printCandidate(c)
     }
@@ -181,25 +192,127 @@ object Evolve {
       print(f"gen $i%03d, ")
       val selected = Array.fill(popSize)(binaryTourament(population))
       // for (c <- selected) { print("select: ") printCandidate(c) }
-      var children = reproduce(selected, popSize, crossRate, mutationRate)
+      val children = reproduce(selected, popSize, crossRate, mutationRate)
       // println("# children = " + children.length)
       // println("\n Sorting....\n")
-      children = children.sortBy(fitness).reverse
+      val children2 = children.sortBy(fitness).reverse
       // for (c <- children) { print("child: ");  printCandidate(c) }
       // println("Sorted....")
 
-      if (fitness(children(0)) >= fitness(best))
-        best = children(0)
+      if (fitness(children2(0)) >= fitness(best))
+        best = children2(0)
 
       population = children
+      $pop = population
+      frame.repaint()
       println("best: " + fitness(best) + " " + best)
 
       if (fitness(best) == numBits)
         break()
+
+      Thread.sleep(500)
+      // System.in.read()
     }}
+
+  System.in.read()
+
   }
 
   def printCandidate(c: String): Unit = {
     println(c + " <" + fitness(c) + ">")
   }
+
+  // point where user pressed mouse button (-1 for none)
+  var startPoint = new Point(-1, -1)
+  // point where user released mouse button (-1 for none)
+  var endPoint = new Point(-1, -1)
+  // current "drag" point (-1 for none)
+  var dragPoint = new Point(-1, -1)
+
+  // get rectangle defined by two points
+  // (Rectangle is in scala.swing)
+  def pointsToRectangle(p1 : Point, p2 : Point) : Rectangle = {
+    val left = p1.x min p2.x
+    val top = p1.y min p2.y
+    val w = math.abs(p1.x - p2.x)
+    val h = math.abs(p1.y - p2.y)
+    new Rectangle(left, top, w, h)
+  }
+
+  // panel for drawing
+  val drawingPanel = new Panel {
+
+    override def paint(g : Graphics2D) {
+      g.setPaint(Color.BLACK)
+      // clear background
+      g.fill(new Rectangle(0,0,size.width,size.height))
+
+      g.setPaint(Color.RED)
+
+      var y = 5
+      for (p <- $pop) {
+        var x = 5
+        for (c <- p) {
+          if (c == '1')
+            g.fill(pointsToRectangle(new Point(x, y), new Point(x + 4, y + 4)))
+          x += 5
+        }
+        y += 5
+      }
+
+      // System.in.read()
+      /*
+      if ((startPoint.x != -1) && (endPoint.x != -1)) {
+        g.fill(pointsToRectangle(startPoint, endPoint))
+      }
+      // draw outline of rectangle in progress
+      if ((startPoint.x != -1) && (dragPoint.x != -1)) {
+        g.draw(pointsToRectangle(startPoint, dragPoint))
+      }
+      */
+    }
+
+    listenTo(mouse.clicks,mouse.moves,keys)
+
+    reactions += {
+      case e:MousePressed =>
+        requestFocus() // only needed because we have keyboard input too
+        startPoint = e.point
+        endPoint = new Point(-1, -1)
+        dragPoint = new Point(-1, -1)
+        repaint()
+      case e:MouseReleased =>
+        requestFocus() // only needed because we have keyboard input too
+        endPoint = e.point
+        dragPoint = new Point(-1, -1)
+        repaint()
+      case e:MouseDragged =>
+        requestFocus() // only needed because we have keyboard input too
+        dragPoint = e.point
+        repaint()
+      case e:KeyTyped =>
+        requestFocus() // only needed because we have keyboard input too
+        repaint()
+        /*
+        if (e.char == 'c') {
+          startPoint = new Point(-1, -1)
+          endPoint = new Point(-1, -1)
+          dragPoint = new Point(-1, -1)
+        }
+        repaint()
+        */
+    }
+  }
+
+  // main layout
+  val frame = new MainFrame {
+    title = "Population"
+    contents = new BorderPanel {
+      layout += (drawingPanel -> BorderPanel.Position.Center)
+    }
+    size = new Dimension(340,560)
+  }
+
+  // start up
+  frame.visible = true
 }
