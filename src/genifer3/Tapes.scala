@@ -21,5 +21,13 @@ object Tapes {
   tape1 = Seq(new Atom("做"), new Atom("什"), new Atom("么"))
 
   // Initialize program tape
-  tape3 = Seq(new ⊙(List(new Atom(100))))
+  tape3 = Seq(
+    new ⊙(List(new Atom("!focus"))),
+    new ⊙(List(new Atom("!CantoneseWord"))),
+    new ⊙(List(new Atom("!extract"), new Atom("!Word"))),
+    // if end of string then exit
+    new ⊙(List(new Atom("!EndOfTape"), new Atom("?"))),
+    // else repeat (by resetting index to 0)
+    new ⊙(List(new Atom("!goto"), new Atom("!3")))
+  )
 }

@@ -26,6 +26,9 @@ object Genifer3 {
 	def main(args: Array[String]) {
 		println("This is Genifer.")
 
+    Evolve.evolve()
+    System.exit(0)
+
 		// Read Rules from file
 
 		val filename = "/home/yky/scala/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
@@ -47,7 +50,7 @@ object Genifer3 {
 					else
 						list ::= new Atom(str)
 				}
-        
+
 				if (isEq) {
 					val t2 = new ⊙
 					t2.atoms = list
@@ -79,10 +82,10 @@ object Genifer3 {
 
 		println("Formulas read into KB.\n\n")
 
-		println(cantonize("什么"))
+		// println(cantonize("什么"))
 
-		println("\n\nSecond task:\n\n")
-		println(cantonize("你喜欢做什么？"))
+		// println("\n\nSecond task:\n\n")
+		// println(cantonize("你喜欢做什么？"))
 	}
 
 	// ***** Convert Mandarin Chinese string to Cantonese
