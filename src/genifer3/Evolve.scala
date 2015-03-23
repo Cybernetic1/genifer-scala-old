@@ -54,6 +54,8 @@ import java.awt.Graphics2D
 
 object Evolve {
 
+  val r = new scala.util.Random
+
   // ** Initialize population
   // This is the set of current KB formulas, no need to initialize
 
@@ -75,7 +77,6 @@ object Evolve {
 
   // generate a string of length num_bits
   def randomBitString(numBits: Int): String = {
-    val r = new scala.util.Random
     val s = new StringBuilder
     for (i <- 1 to numBits) {
       s.append(if (r.nextBoolean) '1' else '0')
@@ -87,12 +88,11 @@ object Evolve {
 
   // pick 2 random but *distinct* candidates, pick the one with higher fitness
   def binaryTourament(pop: Array[String]): String = {
-    val r = new scala.util.Random
     val i = r.nextInt(pop.length)
     var j = r.nextInt(pop.length)
 
-    while (i == j)
-      j = r.nextInt(pop.length)
+    //while (i == j)
+      //j = r.nextInt(pop.length)
 
     if (fitness(pop(i)) > fitness(pop(j)))
       pop(i)
@@ -109,13 +109,12 @@ object Evolve {
   // DNA's length = # of times to attempt mutation.
   // rate = 1/(DNA's length), so longer strand, lower mutation rate
   def pointMutation(dna: String, rate: Float = 1.0f / 64): String = {
-    val r = new scala.util.Random
     val result = new StringBuilder
 
     // print("in: "); printCandidate(dna)
     for (c <- dna) {
       result.append(if (r.nextFloat() < rate)
-                      { if (c == '1') '1' else '0' }
+                      { if (c == '1') '0' else '1' }
                     else c)
     }
     // print("ou: "); printCandidate(result.toString())
@@ -125,8 +124,6 @@ object Evolve {
   // Pick a point within Parent1,
   // cross Parent1's DNA with Parent2's
   def crossover(parent1: String, parent2: String, rate: Float): String = {
-    val r = new scala.util.Random
-
     if (r.nextFloat() > rate)
       return parent1
 
@@ -146,21 +143,20 @@ object Evolve {
 
   // Reproduce for 1 generation
   def reproduce(selected: Array[String], popSize: Int, crossRate: Float, mutationRate: Float): Array[String] = {
-    val r = new scala.util.Random
     var children = new ListBuffer[String]
     var p1, p2: String = null
 
     breakable { for (i <- 0 to selected.length) {
       p1 = selected(i)
-      // p2 = if ((i % 2) == 0) selected(i+1) else selected(i-1)
-      // if (i == selected.length - 1) p2 = selected(0)
-      p2 = selected(r.nextInt(selected.length))
+      p2 = if ((i % 2) == 0) selected(i+1) else selected(i-1)
+      if (i == selected.length - 1) p2 = selected(0)
+      // p2 = selected(r.nextInt(selected.length))
 
       val child = crossover(p1, p2, crossRate)
       children += pointMutation(child, mutationRate)
       if (children.length >= popSize) break()
     }}
-    // println(children.length)
+    // println(results.length)
     children.toArray
   }
 
@@ -192,23 +188,26 @@ object Evolve {
       print(f"gen $i%03d, ")
       val selected = Array.fill(popSize)(binaryTourament(population))
       // for (c <- selected) { print("select: ") printCandidate(c) }
-      val children = reproduce(selected, popSize, crossRate, mutationRate)
+      val selected2 = selected.sortBy(fitness).reverse
+      val gen2 = reproduce(selected2, popSize, crossRate, mutationRate)
       // println("# children = " + children.length)
       // println("\n Sorting....\n")
-      val children2 = children.sortBy(fitness).reverse
+      val gen2s = gen2.sortBy(fitness).reverse
       // for (c <- children) { print("child: ");  printCandidate(c) }
       // println("Sorted....")
 
-      if (fitness(children2(0)) >= fitness(best))
-        best = children2(0)
+      if (fitness(gen2s(0)) >= fitness(best))
+        best = gen2s(0)
 
-      population = children
+      gen2s.copyToArray(population)
       $pop = population
       frame.repaint()
       println("best: " + fitness(best) + " " + best)
 
-      if (fitness(best) == numBits)
+      if (fitness(best) == numBits) {
+        println("Success!!!")
         break()
+      }
 
       Thread.sleep(500)
       // System.in.read()
@@ -229,16 +228,6 @@ object Evolve {
   // current "drag" point (-1 for none)
   var dragPoint = new Point(-1, -1)
 
-  // get rectangle defined by two points
-  // (Rectangle is in scala.swing)
-  def pointsToRectangle(p1 : Point, p2 : Point) : Rectangle = {
-    val left = p1.x min p2.x
-    val top = p1.y min p2.y
-    val w = math.abs(p1.x - p2.x)
-    val h = math.abs(p1.y - p2.y)
-    new Rectangle(left, top, w, h)
-  }
-
   // panel for drawing
   val drawingPanel = new Panel {
 
@@ -247,14 +236,14 @@ object Evolve {
       // clear background
       g.fill(new Rectangle(0,0,size.width,size.height))
 
-      g.setPaint(Color.RED)
+      g.setPaint(Color.GREEN)
 
       var y = 5
       for (p <- $pop) {
         var x = 5
         for (c <- p) {
           if (c == '1')
-            g.fill(pointsToRectangle(new Point(x, y), new Point(x + 4, y + 4)))
+            g.fill(new Rectangle(x, y, 4, 4))
           x += 5
         }
         y += 5
