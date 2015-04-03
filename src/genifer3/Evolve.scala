@@ -89,7 +89,7 @@ object Evolve {
   // pick 2 random but *distinct* candidates, pick the one with higher fitness
   def binaryTourament(pop: Array[String]): String = {
     val i = r.nextInt(pop.length)
-    var j = r.nextInt(pop.length)
+    val j = r.nextInt(pop.length)
 
     //while (i == j)
       //j = r.nextInt(pop.length)

@@ -26,12 +26,9 @@ object Genifer3 {
 	def main(args: Array[String]) {
 		println("This is Genifer.")
 
-    Evolve.evolve()
-    System.exit(0)
-
 		// Read Rules from file
 
-		val filename = "/home/yky/scala/genifer3/test/Cantonese-Mandarin-dictionary.txt"		// for testing
+		val filename = "test/Cantonese-Mandarin-dictionary.txt"		// for testing
 		for(line <- Source.fromFile(filename).getLines()) {
 			if (line(0) != ';') {
 				println(line)
@@ -86,7 +83,10 @@ object Genifer3 {
 
 		// println("\n\nSecond task:\n\n")
 		// println(cantonize("你喜欢做什么？"))
-	}
+
+    // Evolve.evolve()
+    // System.exit(0)
+  }
 
 	// ***** Convert Mandarin Chinese string to Cantonese
   // This is an example where we apply Map Reduce to a small task.

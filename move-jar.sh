@@ -1,1 +1,1 @@
-mv out/genifer3.jar ~/NetbeansProjects/conkey/lib
+mv out/genifer3.jar ~/NetBeansProjects/conceptual-keyboard/lib
