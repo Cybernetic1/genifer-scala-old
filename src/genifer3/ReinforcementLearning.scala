@@ -99,10 +99,8 @@ This is a probability distribution over the random variable A, with the property
 that if Q(A=a0) is higher than other Q(a) values, the probability P(A=a0) would
 be disproportionately close to 1.
 
-It seems that the policy would be chosen via:
-  π(S) = arg max P(A).
-              A
-but in the book the "arg max" symbol was omitted.
+The policy can be chosen simply by sampling the distribution:
+  π(S) = P(A).
 
 Ch 17 talks about Value Iteration and Policy Iteration, and POMDP.
 

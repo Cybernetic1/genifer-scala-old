@@ -12,10 +12,10 @@ object MazeWorld {
 
       if (key == "neighbor") {
         for (dir <- world.directions)
-          val pts =[MazeWorld.World.getPointInDirection(this.x, this.y, dir)
+          val pts = MazeWorld.World.getPointInDirection(this.x, this.y, dir)
 
         for ((x, y) <- pts)
-          val ns = tuple([MazeWorld.World.grid[y][x]] )
+          val ns = tuple(MazeWorld.World.grid[y][x])
         dict("neighbor") = ns
         return ns
       }
@@ -116,9 +116,11 @@ object MazeWorld {
 
   object World {
 
-    val grid
+    val width = 20
+    val height = 20
+    val grid = Array.ofDim[Int](20, 20)
 
-    def __init__(cell = None, width = None, height = None, directions = 8, filename = None) = {
+    def init(cell = None, width = None, height = None, directions = 8, filename = None) = {
 
       if (cell == None)
         cell = Cell
@@ -135,20 +137,20 @@ object MazeWorld {
         width = 20
       if (height == null)
         height = 20
-      this.width = width
-      this.height = height
-      this.image = None
+      width = width
+      height = height
+      image = None
       this.reset()
-      if filename != null:
-        this.load (filename)
+      if (filename != null)
+        load(filename)
     }
     
-    def getCell(x, y) = {
-      return this.grid[y][x]
+    def getCell(x: Int, y: Int) = {
+      grid(y)(x)
     }
     
-    def getWrappedCell(x, y) = {
-      return this.grid[y % this.height][x % this.width]
+    def getWrappedCell(x: Int, y: Int) = {
+      grid(y % height)(x % width)
     }
     
     def reset() = {
@@ -161,71 +163,67 @@ object MazeWorld {
       this.age = 0
     }
     
-    def makeCell(x, y) = {
+    def makeCell(x: Int, y: Int): Cell = {
       val c = this.Cell()
 
       c.x = x
       c.y = y
       c.world = self
-      c.agents =[]
-      return c
+      c.agents = []
+      c
     }
     
     def randomize() = {
-
-      if not hasattr(this.Cell, 'randomize '):
-      return
-      for row in this.grid:
-      for cell in row:
-        cell.randomize ()
+      for (row <- grid)
+          for (cell <- row)
+            cell.randomize()
     }
     
-    def save(f = None) = {
+    def save(fname = "") = {
 
-      if not hasattr(this.Cell, 'save '):
-      return
-      if isinstance(f, type (' ')):
       f = file(f, 'w')
 
-      total = ' '
-      for j in range(this.height):
+      var total = ' '
+      for (j height)
         line = ' '
-      for i in range(this.width):
-        line += this.grid[j][i].save()
+      for (i width)
+        line += grid[j][i]
       total += '% s \ n ' % line
-      if f != null:
+      if (f != null)
         f.write (total)
       f.close()
-      else:
-      return total
+      else
+        return total
     }
     
-    def load(f) = {
+    def load(fname: String) = {
 
-      if not hasattr(this.Cell, 'load '):
-      return
-      if isinstance(f, type (' ')):
-      f = file(f)
-      lines = f.readlines()
+      f = open(fname, "r")
+      var lines = f.readlines()
+
       lines =[x.rstrip() for x in lines]
       fh = len(lines)
       fw = max([len(x) for x in lines] )
-      if fh > this.height:
-        fh = this.height
-      starty = 0
-      else:
-      starty = (this.height - fh) / 2
-      if fw > this.width:
-        fw = this.width
-      startx = 0
-      else:
-      startx = (this.width - fw) / 2
 
-      this.reset()
-      for j in range(fh):
+      if (fh > height)
+        fh = height
+        starty = 0
+      else
+        starty = (height - fh) / 2
+
+      if (fw > width)
+        fw = width
+        startx = 0
+      else
+        startx = (width - fw) / 2
+
+      reset()
+
+      var line: String = ""
+      for (j <- range(fh))
         line = lines[j]
-      for i in range(min(fw, len(line))):
-        this.grid[starty + j][startx + i].load(line[i])
+      for (i <- range(min(fw, len(line))))
+        grid[starty + j][startx + i].load(line[i])
     }
     
     def update() = {

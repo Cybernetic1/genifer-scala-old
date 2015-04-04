@@ -7,12 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e82e5bc1-68b6-4a3f-98f2-02c05e8a9cf4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/genifer3/MazeWorld.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/Evolve.scala" afterPath="$PROJECT_DIR$/src/genifer3/Evolve.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/Genifer3.scala" afterPath="$PROJECT_DIR$/src/genifer3/Genifer3.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/move-jar.sh" afterPath="$PROJECT_DIR$/move-jar.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/MazeWorld.scala" afterPath="$PROJECT_DIR$/src/genifer3/MazeWorld.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala" afterPath="$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala" />
     </list>
     <ignored path="genifer3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,44 +33,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Evolve.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/genifer3/Evolve.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2772" max-vertical-offset="6426">
-              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Genifer3.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/genifer3/Genifer3.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="641" max-vertical-offset="3822">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3822">
               <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReinforcementLearning.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReinforcementLearning.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3027" max-vertical-offset="4746">
-              <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.63304347" vertical-offset="2268" max-vertical-offset="4704">
+              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MazeWorld.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/genifer3/MazeWorld.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26876092" vertical-offset="1953" max-vertical-offset="15330">
-              <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-              <folding>
-                <element signature="e#16984#16998#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -89,14 +63,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/genifer3/Evolve.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/Genifer3.scala" />
-        <option value="$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala" />
         <option value="$PROJECT_DIR$/src/genifer3/MazeWorld.scala" />
+        <option value="$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1074" />
-    <option name="height" value="1920" />
+    <option name="x" value="-1" />
+    <option name="width" value="1082" />
+    <option name="height" value="1926" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -486,8 +461,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1074" height="1920" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1" y="0" width="1082" height="1926" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -653,21 +628,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala">
+    <entry file="file://$PROJECT_DIR$/src/genifer3/MazeWorld.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2901" max-vertical-offset="4746">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.29217392" vertical-offset="0" max-vertical-offset="15288">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#16775#16789#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/genifer3/MazeWorld.scala">
+    <entry file="file://$PROJECT_DIR$/src/genifer3/ReinforcementLearning.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26876092" vertical-offset="1953" max-vertical-offset="15330">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding>
-            <element signature="e#16984#16998#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.63304347" vertical-offset="2268" max-vertical-offset="4704">
+          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
