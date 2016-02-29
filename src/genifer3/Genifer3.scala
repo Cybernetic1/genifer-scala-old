@@ -29,36 +29,43 @@ object Genifer3 {
 		// Read Rules from file
 
 		val filename = "test/Cantonese-Mandarin-dictionary.txt"		// for testing
-		for(line <- Source.fromFile(filename).getLines()) {
-			if (line(0) != ';') {
-				println(line)
-				var isEq: Boolean = false
-				var list: List[Atom] = List()
-				val t1 = new ⊙
 
-				for (str <- line.split(" ")) {
-					if (str(0) == '\"')
-						list ::= new Atom(str.replace("\"", ""))
-					else if (str == "=") {
-						isEq = true
-						t1.atoms = list
-						list = List()
+
+		try {
+			for (line <- Source.fromFile(filename).getLines()) {
+				if (line(0) != ';') {
+					println(line)
+					var isEq: Boolean = false
+					var list: List[Atom] = List()
+					val t1 = new ⊙
+
+					for (str <- line.split(" ")) {
+						if (str(0) == '\"')
+							list ::= new Atom(str.replace("\"", ""))
+						else if (str == "=") {
+							isEq = true
+							t1.atoms = list
+							list = List()
+						}
+						else
+							list ::= new Atom(str)
 					}
-					else
-						list ::= new Atom(str)
-				}
 
-				if (isEq) {
-					val t2 = new ⊙
-					t2.atoms = list
-					rb.addFormula(new Equation(t1, t2))
-				}
-				else {
-					val f2 = new ⊙
-					f2.atoms = list
-					rb.addFormula(f2)
+					if (isEq) {
+						val t2 = new ⊙
+						t2.atoms = list
+						rb.addFormula(new Equation(t1, t2))
+					}
+					else {
+						val f2 = new ⊙
+						f2.atoms = list
+						rb.addFormula(f2)
+					}
 				}
 			}
+		println("Formulas read into KB.\n\n")
+		} catch {
+			case ex: Exception => println("Cannot read dictionary file")
 		}
 
 		// Alternative code (old):
@@ -76,8 +83,6 @@ object Genifer3 {
 		//			f.atoms = list
 		//			rules.addFormula(f)
 		//			})
-
-		println("Formulas read into KB.\n\n")
 
 		// println(cantonize("什么"))
 

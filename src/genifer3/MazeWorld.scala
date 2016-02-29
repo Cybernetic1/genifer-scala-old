@@ -66,7 +66,7 @@ object MazeWorld {
     def goInDirection(dir) = {
       target = this.cell.neighbour[dir]
 
-      if (getattr(target, 'wall ', False))
+      if (getattr(target, "wall ", False))
       // print "hit a wall"
         return False
       this.cell = target
@@ -108,7 +108,7 @@ object MazeWorld {
         best = n
       bestDist = dist
       if best != null:
-      if getattr(best, 'wall ', False):
+      if getattr(best, "wall ", False):
       return
       this.cell = best
     }
@@ -181,14 +181,14 @@ object MazeWorld {
     
     def save(fname = "") = {
 
-      f = file(f, 'w')
+      f = file(f, "w")
 
       var total = ' '
       for (j height)
         line = ' '
       for (i width)
         line += grid[j][i]
-      total += '% s \ n ' % line
+      total += "% s \ n " % line
       if (f != null)
         f.write (total)
       f.close()
